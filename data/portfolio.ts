@@ -3,8 +3,11 @@ export const siteConfig = {
   metaTitle: "Ravi Yadav | AIR 6522 JEE Advanced '23 · Data Mining & Deep Learning",
   metaDescription:
     "Computer Science undergraduate (CSE '27) at Newton School of Technology. Data mining researcher, deep learning engineer, and competitive programmer — Jaipur, India.",
-  email: "ravi.yadav@example.com",
-  resumePath: "/resume.pdf",
+  email: "yadavr74839@gmail.com",
+  /** File must live in `public/` with this exact name. Commit + push so Vercel serves it. */
+  resumePath: "/Ravi_Resume.pdf",
+  /** Bump this after replacing the PDF so browsers/CDN fetch the new file (e.g. "2", "3"). */
+  resumeCacheKey: "1",
   /** Photo in `public/` — e.g. `/profile.jpeg` or `/profile.png` (square, ≥256×256 recommended). */
   profileImage: "/profile.jpeg",
   social: {

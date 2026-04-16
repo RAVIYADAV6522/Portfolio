@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { hero, siteConfig } from "@/data/portfolio";
 
@@ -54,12 +53,18 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start"
           >
-            <Link
-              href={siteConfig.resumePath}
+            <a
+              href={
+                siteConfig.resumeCacheKey
+                  ? `${siteConfig.resumePath}?v=${siteConfig.resumeCacheKey}`
+                  : siteConfig.resumePath
+              }
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex rounded-full bg-accent-mint px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
             >
               resume
-            </Link>
+            </a>
             <a
               href="#projects"
               className="inline-flex rounded-full bg-accent-lavender px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
