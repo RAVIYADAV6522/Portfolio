@@ -34,7 +34,7 @@ Almost all copy, links, and lists live in **`data/portfolio.ts`**:
 **Assets:**
 
 - **`public/resume.pdf`** — resume opened from the Hero “resume” button
-- **`public/avatar.svg`** (or replace with `avatar.jpg` and update `components/Hero.tsx`)
+- **`public/profile.jpeg`** — Hero profile photo (or change `siteConfig.profileImage` in `data/portfolio.ts`). If the file is missing, the site falls back to `public/avatar.svg`. Use a square image (about 400×400px or larger) for best results.
 
 ## Environment
 
@@ -55,6 +55,10 @@ data/portfolio.ts    # Single source of truth for portfolio content
 lib/utils.ts         # `cn()` helper for class names
 public/              # Static files (resume, avatar)
 ```
+
+## Layout
+
+The UI uses responsive Tailwind breakpoints (`sm`, `md`, `lg`), a horizontally scrollable bottom nav on very narrow screens, safe-area padding for notched devices, and `min-h-[100dvh]` on the hero so mobile browser chrome doesn’t clip content.
 
 ## Deployment
 

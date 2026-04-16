@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased`}
+        className={`${inter.variable} ${outfit.variable} ${jetbrains.variable} min-h-[100dvh] overflow-x-hidden font-sans antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

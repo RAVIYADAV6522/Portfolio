@@ -13,8 +13,8 @@ import { WorkExperience } from "@/components/WorkExperience";
 
 export default function Home() {
   return (
-    <div className="bg-dot-grid min-h-screen">
-      <main>
+    <div className="bg-dot-grid min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden">
+      <main className="pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(6rem+env(safe-area-inset-bottom,0px))]">
         <Hero />
         <About />
         <WorkExperience />

@@ -22,7 +22,7 @@ export function SectionMotion({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-40px", amount: 0.15 }}
       variants={sectionVariants}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >

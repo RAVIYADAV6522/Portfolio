@@ -14,9 +14,16 @@
   --dot-color: #1e293b;
 }
 
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
+  overflow-x: clip;
 }
 
 @layer utilities {
@@ -33,5 +40,12 @@ body {
     );
     background-size: 32px 32px;
     background-attachment: fixed;
+  }
+
+  @media (max-width: 768px) {
+    .bg-dot-grid {
+      /* fixed backgrounds can jitter on mobile Safari */
+      background-attachment: scroll;
+    }
   }
 }

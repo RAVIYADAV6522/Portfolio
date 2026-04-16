@@ -12,7 +12,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 px-4 md:px-8"
+      className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
       aria-labelledby="projects-heading"
     >
       <div className="mx-auto max-w-content">
@@ -21,11 +21,11 @@ export function Projects() {
         </span>
         <h2
           id="projects-heading"
-          className="font-heading mt-6 text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"
+          className="font-heading mt-6 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl"
         >
           Check out my latest work
         </h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
           {projects.map((project, i) => (
             <article
               key={`${project.title}-${i}`}

@@ -8,7 +8,10 @@ import { SectionMotion } from "@/components/SectionMotion";
 
 export function Contact() {
   return (
-    <SectionMotion id="contact" className="py-24 px-4 pb-36 text-center md:px-8">
+    <SectionMotion
+      id="contact"
+      className="px-4 py-16 text-center sm:px-6 sm:py-20 md:px-8 lg:py-24 pb-[calc(5rem+env(safe-area-inset-bottom,0px))] sm:pb-36"
+    >
       <div className="mx-auto max-w-content">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -16,10 +19,10 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+          <h2 className="font-heading text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl">
             {contact.heading}
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-gray-text">
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-gray-text">
             {contact.subheading}
           </p>
           <a
@@ -28,38 +31,32 @@ export function Contact() {
           >
             {contact.cta}
           </a>
-          <div className="mt-10 flex items-center justify-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-sm font-medium text-slate-600 dark:text-slate-300">
             <a
               href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-primary"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg px-2 hover:text-primary sm:min-h-0 sm:min-w-0"
             >
-              <FaGithub className="h-5 w-5" />
+              <FaGithub className="h-5 w-5 shrink-0" />
               GitHub
             </a>
-            <span className="text-slate-300 dark:text-slate-600" aria-hidden>
-              ·
-            </span>
             <a
               href={siteConfig.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-primary"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg px-2 hover:text-primary sm:min-h-0 sm:min-w-0"
             >
-              <FaLinkedin className="h-5 w-5" />
+              <FaLinkedin className="h-5 w-5 shrink-0" />
               LinkedIn
             </a>
-            <span className="text-slate-300 dark:text-slate-600" aria-hidden>
-              ·
-            </span>
             <a
               href={siteConfig.social.leetcode}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-primary"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-lg px-2 hover:text-primary sm:min-h-0 sm:min-w-0"
             >
-              <SiLeetcode className="h-5 w-5" />
+              <SiLeetcode className="h-5 w-5 shrink-0" />
               LeetCode
             </a>
           </div>

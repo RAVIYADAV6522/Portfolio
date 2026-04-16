@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { hero, siteConfig } from "@/data/portfolio";
 
 const child = {
@@ -11,14 +12,16 @@ const child = {
 };
 
 export function Hero() {
+  const [avatarSrc, setAvatarSrc] = useState(siteConfig.profileImage);
+
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col justify-center px-4 py-24 md:flex-row md:items-center md:px-8"
+      className="relative flex min-h-screen min-h-[100dvh] flex-col justify-center px-4 pb-32 pt-20 sm:px-6 sm:pb-28 sm:pt-24 md:flex-row md:items-center md:px-8 md:py-24"
     >
-      <div className="mx-auto flex w-full max-w-content flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
+      <div className="mx-auto flex w-full min-w-0 max-w-content flex-col gap-8 sm:gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
         <motion.div
-          className="max-w-xl md:w-[55%]"
+          className="min-w-0 max-w-xl md:w-[55%]"
           initial="hidden"
           animate="visible"
           variants={{
@@ -28,28 +31,28 @@ export function Hero() {
           <motion.h1
             variants={child}
             transition={{ duration: 0.5 }}
-            className="font-heading text-4xl font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl"
+            className="font-heading text-[clamp(1.625rem,5vw+0.5rem,3rem)] font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl"
           >
             {hero.greeting}
           </motion.h1>
           <motion.p
             variants={child}
             transition={{ duration: 0.5 }}
-            className="mt-4 text-base font-medium leading-relaxed text-slate-700 dark:text-slate-200"
+            className="mt-4 text-pretty text-base font-medium leading-relaxed text-slate-700 dark:text-slate-200"
           >
             {hero.summaryLine}
           </motion.p>
           <motion.p
             variants={child}
             transition={{ duration: 0.5 }}
-            className="mt-3 text-sm leading-relaxed text-gray-text"
+            className="mt-3 text-pretty text-sm leading-relaxed text-gray-text"
           >
             {hero.metaLine}
           </motion.p>
           <motion.div
             variants={child}
             transition={{ duration: 0.5 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start"
           >
             <Link
               href={siteConfig.resumePath}
@@ -78,14 +81,16 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.15 }}
         >
-          <div className="relative h-32 w-32">
+          <div className="relative h-32 w-32 sm:h-40 sm:w-40">
             <Image
-              src="/avatar.svg"
+              src={avatarSrc}
               alt={`${siteConfig.name} portrait`}
-              width={128}
-              height={128}
+              width={160}
+              height={160}
               priority
-              className="h-32 w-32 rounded-full object-cover ring-4 ring-teal-400 ring-offset-2 ring-offset-[var(--background)] shadow-lg dark:ring-offset-slate-900"
+              sizes="(max-width: 768px) 128px, 160px"
+              onError={() => setAvatarSrc("/avatar.svg")}
+              className="h-32 w-32 rounded-full object-cover ring-4 ring-teal-400 ring-offset-2 ring-offset-[var(--background)] shadow-lg dark:ring-offset-slate-900 sm:h-40 sm:w-40"
             />
           </div>
         </motion.div>

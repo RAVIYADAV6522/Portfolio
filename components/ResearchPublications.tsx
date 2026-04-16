@@ -14,7 +14,7 @@ export function ResearchPublications() {
   return (
     <section
       id="research"
-      className="py-24 px-4 md:px-8"
+      className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
       aria-labelledby="research-heading"
     >
       <div className="mx-auto max-w-content">

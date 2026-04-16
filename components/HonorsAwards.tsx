@@ -6,7 +6,10 @@ import { honorsAwards } from "@/data/portfolio";
 
 export function HonorsAwards() {
   return (
-    <SectionMotion id="honors" className="py-24 px-4 md:px-8">
+    <SectionMotion
+      id="honors"
+      className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
+    >
       <div className="mx-auto max-w-content">
         <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
           Honors &amp; Awards

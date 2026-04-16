@@ -5,6 +5,8 @@ export const siteConfig = {
     "Computer Science undergraduate (CSE '27) at Newton School of Technology. Data mining researcher, deep learning engineer, and competitive programmer — Jaipur, India.",
   email: "ravi.yadav@example.com",
   resumePath: "/resume.pdf",
+  /** Photo in `public/` — e.g. `/profile.jpeg` or `/profile.png` (square, ≥256×256 recommended). */
+  profileImage: "/profile.jpeg",
   social: {
     github: "https://github.com/RAVIYADAV6522",
     linkedin: "https://www.linkedin.com/in/ravi-y-963457363/",
