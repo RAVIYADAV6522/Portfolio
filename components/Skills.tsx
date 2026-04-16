@@ -1,0 +1,33 @@
+import { SectionMotion } from "@/components/SectionMotion";
+import { skillsByCategory } from "@/data/portfolio";
+
+export function Skills() {
+  return (
+    <SectionMotion id="skills" className="py-24 px-4 md:px-8">
+      <div className="mx-auto max-w-content">
+        <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+          Skills
+        </h2>
+        <div className="mt-10 space-y-10">
+          {skillsByCategory.map((group) => (
+            <div key={group.category}>
+              <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-200">
+                {group.category}
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </SectionMotion>
+  );
+}
