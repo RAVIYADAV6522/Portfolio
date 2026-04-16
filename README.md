@@ -62,7 +62,51 @@ The UI uses responsive Tailwind breakpoints (`sm`, `md`, `lg`), a horizontally s
 
 ## Deployment
 
-Deploy to **[Vercel](https://vercel.com)** (or any host that supports Next.js): connect the repo, set `NEXT_PUBLIC_SITE_URL`, and use the default build command `npm run build` with output directory `.next`.
+### Option A — Vercel (recommended for Next.js)
+
+1. **Push this project to GitHub** (or GitLab / Bitbucket):
+
+   ```bash
+   git init
+   git add .
+   git commit -m "Portfolio site"
+   gh repo create portfolio --private --source=. --push
+   ```
+
+   Or create an empty repo in the browser, then:
+
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+2. **Import on Vercel**
+   - Go to [vercel.com](https://vercel.com) → **Add New** → **Project** → import your repo.
+   - **Framework Preset:** Next.js (auto-detected).
+   - **Build Command:** `npm run build` (default).
+   - **Output Directory:** leave default (Next.js handles this).
+
+3. **Environment variable**
+   - **Settings → Environment Variables**
+   - Name: `NEXT_PUBLIC_SITE_URL`
+   - Value: your production URL, e.g. `https://your-project.vercel.app` (use your real domain after the first deploy; update if you add a custom domain).
+   - Enable for **Production** (and **Preview** if you want correct OG URLs on PR previews).
+   - Redeploy after saving.
+
+4. **Deploy** — Vercel builds on every push to `main`.
+
+**CLI (optional):** install [Vercel CLI](https://vercel.com/docs/cli), run `npm i -g vercel`, then from the project folder run `vercel` and follow the prompts (links the folder to a project and deploys).
+
+### Option B — Other hosts
+
+Any platform that runs **Node.js** and supports **Next.js** (e.g. Netlify with the Next runtime, Railway, Render) needs:
+
+- Install: `npm ci` or `npm install`
+- Build: `npm run build`
+- Start: `npm run start` (not `next dev`)
+
+Set `NEXT_PUBLIC_SITE_URL` in that platform’s env UI the same way as on Vercel.
 
 ---
 
