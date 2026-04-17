@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { SectionMotion } from "@/components/SectionMotion";
 import { certifications } from "@/data/portfolio";
+import { scrollLiftProps } from "@/lib/motion";
 
 export function Certifications() {
   return (
@@ -19,10 +20,7 @@ export function Certifications() {
           {certifications.map((cert, i) => (
             <motion.li
               key={cert.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
+              {...scrollLiftProps(i)}
               className="rounded-xl border border-slate-200/80 bg-white/50 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">

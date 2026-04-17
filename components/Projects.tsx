@@ -1,12 +1,18 @@
 "use client";
 
 import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 import { projects } from "@/data/portfolio";
+import {
+  scrollLiftProps,
+  springSnappy,
+  staggerContainer,
+  staggerItem,
+  viewportOnce,
+} from "@/lib/motion";
 
 /**
- * Uses a plain <section> and static cards (no opacity-0 + whileInView) so project
- * cards are always visible. Nested Framer “in view” animations were leaving cards
- * stuck invisible in some layouts/browsers.
+ * Header uses stagger; cards use scroll “lift” with opacity 1 so they never stick invisible.
  */
 export function Projects() {
   return (
@@ -16,20 +22,33 @@ export function Projects() {
       aria-labelledby="projects-heading"
     >
       <div className="mx-auto max-w-content">
-        <span className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white dark:bg-slate-100 dark:text-slate-900">
-          Projects
-        </span>
-        <h2
-          id="projects-heading"
-          className="font-heading mt-6 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl"
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
         >
-          Check out my latest work
-        </h2>
+          <motion.span
+            variants={staggerItem}
+            className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white dark:bg-slate-100 dark:text-slate-900"
+          >
+            Projects
+          </motion.span>
+          <motion.h2
+            variants={staggerItem}
+            id="projects-heading"
+            className="font-heading mt-6 text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl"
+          >
+            Check out my latest work
+          </motion.h2>
+        </motion.div>
         <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
           {projects.map((project, i) => (
-            <article
+            <motion.article
               key={`${project.title}-${i}`}
-              className="flex flex-col rounded-xl border border-slate-200/80 bg-white/60 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
+              {...scrollLiftProps(i)}
+              whileHover={{ y: -4, transition: springSnappy }}
+              className="flex flex-col rounded-xl border border-slate-200/80 bg-white/60 p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-700 dark:bg-slate-800/40"
             >
               <h3 className="font-heading text-lg font-semibold text-slate-900 dark:text-white">
                 {project.title}
@@ -49,6 +68,8 @@ export function Projects() {
                 {project.reportUrl && (
                   <a
                     href={project.reportUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 transition hover:border-primary hover:text-primary dark:border-slate-600 dark:text-slate-200"
                   >
                     Report
@@ -69,7 +90,7 @@ export function Projects() {
                   </span>
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

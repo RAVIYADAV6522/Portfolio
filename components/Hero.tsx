@@ -4,11 +4,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { hero, siteConfig } from "@/data/portfolio";
+import { springSnappy } from "@/lib/motion";
 
 const child = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
+
+const ctaMotion =
+  "inline-flex rounded-full px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm";
 
 export function Hero() {
   const [avatarSrc, setAvatarSrc] = useState(siteConfig.profileImage);
@@ -53,7 +57,7 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="mt-8 flex flex-wrap justify-center gap-3 sm:justify-start"
           >
-            <a
+            <motion.a
               href={
                 siteConfig.resumeCacheKey
                   ? `${siteConfig.resumePath}?v=${siteConfig.resumeCacheKey}`
@@ -61,30 +65,39 @@ export function Hero() {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-accent-mint px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
+              className={`${ctaMotion} bg-accent-mint`}
+              whileHover={{ scale: 1.06, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={springSnappy}
             >
               resume
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#projects"
-              className="inline-flex rounded-full bg-accent-lavender px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
+              className={`${ctaMotion} bg-accent-lavender`}
+              whileHover={{ scale: 1.06, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={springSnappy}
             >
               projects
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="inline-flex rounded-full bg-accent-coral px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
+              className={`${ctaMotion} bg-accent-coral`}
+              whileHover={{ scale: 1.06, y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              transition={springSnappy}
             >
               contact
-            </a>
+            </motion.a>
           </motion.div>
         </motion.div>
 
         <motion.div
           className="flex shrink-0 justify-center md:justify-end"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.55, delay: 0.15 }}
+          initial={{ opacity: 0, scale: 0.92, rotate: -4 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 160, damping: 18, delay: 0.18 }}
         >
           <div className="relative h-32 w-32 sm:h-40 sm:w-40">
             <Image

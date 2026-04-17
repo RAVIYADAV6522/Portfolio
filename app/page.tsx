@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { BackgroundCube } from "@/components/BackgroundCube";
 import { Contact } from "@/components/Contact";
 import { Education } from "@/components/Education";
 import { AchievementsActivities } from "@/components/AchievementsActivities";
@@ -13,8 +14,9 @@ import { WorkExperience } from "@/components/WorkExperience";
 
 export default function Home() {
   return (
-    <div className="bg-dot-grid min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden">
-      <main className="pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(6rem+env(safe-area-inset-bottom,0px))]">
+    <div className="relative min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden bg-dot-grid">
+      <BackgroundCube />
+      <main className="relative z-10 pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(6rem+env(safe-area-inset-bottom,0px))]">
         <Hero />
         <About />
         <WorkExperience />
