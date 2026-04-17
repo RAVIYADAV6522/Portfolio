@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { PortfolioLoadProvider } from "@/components/PortfolioLoadContext";
 
 const SEGMENT_ROTATIONS = [0, 45, 90, 135, 180, 225, 270, 315] as const;
 const NUM_SEGMENTS = SEGMENT_ROTATIONS.length;
@@ -72,7 +73,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <>
+    <PortfolioLoadProvider ready={ready}>
       {children}
 
       <AnimatePresence>
@@ -92,7 +93,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </PortfolioLoadProvider>
   );
 }
 
