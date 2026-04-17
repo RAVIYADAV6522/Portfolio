@@ -1,20 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { EatingPanda } from "@/components/EatingPanda";
 import { SectionMotion } from "@/components/SectionMotion";
 import { honorsAwards } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
 export function HonorsAwards() {
+  const honorsHeaderRef = useRef<HTMLDivElement>(null);
+  const honorsInView = useInView(honorsHeaderRef, {
+    amount: 0.55,
+    margin: "0px 0px -12% 0px",
+    once: false,
+  });
+
   return (
     <SectionMotion
       id="honors"
       className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-content">
-        <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
-          Honors &amp; Awards
-        </h2>
+        <div ref={honorsHeaderRef} className="flex flex-col items-start gap-1">
+          <EatingPanda eatingActive={honorsInView} />
+          <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+            Honors &amp; Awards
+          </h2>
+        </div>
         <ul className="mt-12 space-y-8">
           {honorsAwards.map((award, i) => (
             <motion.li

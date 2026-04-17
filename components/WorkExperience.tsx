@@ -1,20 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { SectionMotion } from "@/components/SectionMotion";
+import { DrummingMonkey } from "@/components/DrummingMonkey";
 import { workExperience } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
 export function WorkExperience() {
+  const internshipsHeaderRef = useRef<HTMLDivElement>(null);
+  const internshipsInView = useInView(internshipsHeaderRef, {
+    amount: 0.55,
+    margin: "0px 0px -12% 0px",
+    once: false,
+  });
+
   return (
     <SectionMotion
       id="work-experience"
       className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-content">
-        <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
-          Internships
-        </h2>
+        <div
+          ref={internshipsHeaderRef}
+          className="flex flex-col items-start gap-1"
+        >
+          <DrummingMonkey drumActive={internshipsInView} />
+          <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+            Internships
+          </h2>
+        </div>
         <ul className="mt-12 space-y-10">
           {workExperience.map((job, idx) => (
             <motion.li
