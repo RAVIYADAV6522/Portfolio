@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { hero, siteConfig } from "@/data/portfolio";
 import { springSnappy } from "@/lib/motion";
+import { TypewriterText } from "@/components/TypewriterText";
 
 const child = {
   hidden: { opacity: 0, y: 24 },
@@ -36,14 +37,14 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="font-heading text-[clamp(1.625rem,5vw+0.5rem,3rem)] font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl"
           >
-            {hero.greeting}
+            <TypewriterText text={hero.greeting} startDelayMs={320} />
           </motion.h1>
           <motion.p
             variants={child}
             transition={{ duration: 0.5 }}
             className="mt-4 text-pretty text-base font-medium leading-relaxed text-slate-700 dark:text-slate-200"
           >
-            {hero.summaryLine}
+            <TypewriterText text={hero.summaryLine} startDelayMs={980} />
           </motion.p>
           <motion.p
             variants={child}
