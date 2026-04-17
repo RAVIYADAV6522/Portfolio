@@ -6,10 +6,11 @@ const cubeSlotClass =
   "absolute flex h-[min(42vw,280px)] w-[min(42vw,280px)] items-center justify-center sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]";
 
 /**
- * Two subtle 3D cubes (left + right) in the page background, rAF-driven.
+ * Three subtle 3D cubes (left, center, right) in the page background, rAF-driven.
  */
 export function BackgroundCube() {
   const leftRef = useRef<HTMLDivElement>(null);
+  const centerRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
 
@@ -19,12 +20,18 @@ export function BackgroundCube() {
 
     const tick = (t: number) => {
       const left = leftRef.current;
+      const center = centerRef.current;
       const right = rightRef.current;
 
       if (left) {
         const rotate = Math.sin((t + 4200) / 10000) * 200;
         const y = (1 + Math.sin((t + 900) / 1000)) * -50;
         left.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${-rotate}deg)`;
+      }
+      if (center) {
+        const rotate = Math.sin((t + 2100) / 10000) * 200;
+        const y = (1 + Math.sin((t + 450) / 1000)) * -42;
+        center.style.transform = `translateY(${y}px) rotateX(${rotate * 0.92}deg) rotateY(${rotate * 0.88}deg)`;
       }
       if (right) {
         const rotate = Math.sin(t / 10000) * 200;
@@ -49,6 +56,21 @@ export function BackgroundCube() {
       >
         <div className="portfolio-bg-cube__inner">
           <div className="portfolio-bg-cube__cube" ref={leftRef}>
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__front" />
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__left" />
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__right" />
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__top" />
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__bottom" />
+            <div className="portfolio-bg-cube__side portfolio-bg-cube__back" />
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`portfolio-bg-cube--center ${cubeSlotClass} left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.85] sm:scale-90`}
+      >
+        <div className="portfolio-bg-cube__inner">
+          <div className="portfolio-bg-cube__cube" ref={centerRef}>
             <div className="portfolio-bg-cube__side portfolio-bg-cube__front" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__left" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__right" />
@@ -90,6 +112,21 @@ function CubeStyles() {
       }
       .dark .portfolio-bg-cube__inner {
         opacity: 0.18;
+      }
+
+      .portfolio-bg-cube--center .portfolio-bg-cube__inner {
+        opacity: 0.14;
+      }
+      .dark .portfolio-bg-cube--center .portfolio-bg-cube__inner {
+        opacity: 0.11;
+      }
+      @media (max-width: 640px) {
+        .portfolio-bg-cube--center .portfolio-bg-cube__inner {
+          opacity: 0.1;
+        }
+        .dark .portfolio-bg-cube--center .portfolio-bg-cube__inner {
+          opacity: 0.08;
+        }
       }
       @media (max-width: 640px) {
         .portfolio-bg-cube__inner {
