@@ -108,32 +108,32 @@ function CubeStyles() {
         perspective: 800px;
         width: 200px;
         height: 200px;
-        opacity: 0.22;
+        opacity: 0.5;
       }
       .dark .portfolio-bg-cube__inner {
-        opacity: 0.18;
+        opacity: 0.42;
       }
 
       .portfolio-bg-cube--center .portfolio-bg-cube__inner {
-        opacity: 0.14;
+        opacity: 0.38;
       }
       .dark .portfolio-bg-cube--center .portfolio-bg-cube__inner {
-        opacity: 0.11;
+        opacity: 0.32;
       }
       @media (max-width: 640px) {
         .portfolio-bg-cube--center .portfolio-bg-cube__inner {
-          opacity: 0.1;
+          opacity: 0.3;
         }
         .dark .portfolio-bg-cube--center .portfolio-bg-cube__inner {
-          opacity: 0.08;
+          opacity: 0.26;
         }
       }
       @media (max-width: 640px) {
         .portfolio-bg-cube__inner {
-          opacity: 0.14;
+          opacity: 0.4;
         }
         .dark .portfolio-bg-cube__inner {
-          opacity: 0.12;
+          opacity: 0.34;
         }
       }
 
@@ -145,38 +145,65 @@ function CubeStyles() {
         will-change: transform;
       }
 
+      /* Dual gradient palette: #F472B6 → #C084FC → #818CF8 */
       .portfolio-bg-cube__side {
         position: absolute;
         width: 100%;
         height: 100%;
-        opacity: 0.65;
-        border: 1px solid rgba(148, 163, 184, 0.15);
+        opacity: 0.88;
+        border: 1px solid rgba(192, 132, 252, 0.42);
         box-sizing: border-box;
       }
 
       .portfolio-bg-cube__front {
         transform: rotateY(0deg) translateZ(100px);
-        background-color: rgba(45, 212, 191, 0.35);
+        background: linear-gradient(
+          145deg,
+          rgba(244, 114, 182, 0.58) 0%,
+          rgba(192, 132, 252, 0.52) 100%
+        );
       }
       .portfolio-bg-cube__right {
         transform: rotateY(90deg) translateZ(100px);
-        background-color: rgba(99, 102, 241, 0.3);
+        background: linear-gradient(
+          160deg,
+          rgba(192, 132, 252, 0.55) 0%,
+          rgba(129, 140, 248, 0.5) 100%
+        );
       }
       .portfolio-bg-cube__back {
         transform: rotateY(180deg) translateZ(100px);
-        background-color: rgba(244, 114, 182, 0.28);
+        background: linear-gradient(
+          145deg,
+          rgba(129, 140, 248, 0.5) 0%,
+          rgba(244, 114, 182, 0.52) 100%
+        );
       }
       .portfolio-bg-cube__left {
         transform: rotateY(-90deg) translateZ(100px);
-        background-color: rgba(56, 189, 248, 0.3);
+        background: linear-gradient(
+          135deg,
+          rgba(244, 114, 182, 0.52) 0%,
+          rgba(129, 140, 248, 0.48) 100%
+        );
       }
       .portfolio-bg-cube__top {
         transform: rotateX(90deg) translateZ(100px);
-        background-color: rgba(167, 139, 250, 0.28);
+        background: linear-gradient(
+          180deg,
+          rgba(244, 114, 182, 0.48) 0%,
+          rgba(192, 132, 252, 0.5) 45%,
+          rgba(129, 140, 248, 0.48) 100%
+        );
       }
       .portfolio-bg-cube__bottom {
         transform: rotateX(-90deg) translateZ(100px);
-        background-color: rgba(52, 211, 153, 0.3);
+        background: linear-gradient(
+          0deg,
+          rgba(129, 140, 248, 0.5) 0%,
+          rgba(192, 132, 252, 0.48) 55%,
+          rgba(244, 114, 182, 0.5) 100%
+        );
       }
     `}</style>
   );
