@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
 import { honorsAwards } from "@/data/portfolio";
+import { scrollLiftProps } from "@/lib/motion";
 
 export function HonorsAwards() {
   return (
@@ -18,10 +19,7 @@ export function HonorsAwards() {
           {honorsAwards.map((award, i) => (
             <motion.li
               key={award.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              {...scrollLiftProps(i)}
               className="border-b border-slate-200/80 pb-8 last:border-0 dark:border-slate-700"
             >
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">

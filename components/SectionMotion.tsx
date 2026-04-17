@@ -1,11 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const sectionVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
+import { sectionReveal, viewportOnce } from "@/lib/motion";
 
 export function SectionMotion({
   children,
@@ -22,9 +18,8 @@ export function SectionMotion({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-40px", amount: 0.15 }}
-      variants={sectionVariants}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      viewport={viewportOnce}
+      variants={sectionReveal}
     >
       {children}
     </motion.section>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
 import { workExperience } from "@/data/portfolio";
+import { scrollLiftProps } from "@/lib/motion";
 
 export function WorkExperience() {
   return (
@@ -18,10 +19,7 @@ export function WorkExperience() {
           {workExperience.map((job, idx) => (
             <motion.li
               key={job.company}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
+              {...scrollLiftProps(idx)}
               className="rounded-xl border border-slate-200/80 bg-white/50 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

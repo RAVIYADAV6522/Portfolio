@@ -1,5 +1,9 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
 import { educationEntries } from "@/data/portfolio";
+import { staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
 export function Education() {
   return (
@@ -7,14 +11,27 @@ export function Education() {
       id="education"
       className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
     >
-      <div className="mx-auto max-w-content">
-        <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
+      <motion.div
+        className="mx-auto max-w-content"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+      >
+        <motion.h2
+          variants={staggerItem}
+          className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"
+        >
           Education
-        </h2>
-        <ul className="mt-10 space-y-6">
+        </motion.h2>
+        <motion.ul
+          variants={staggerContainer}
+          className="mt-10 list-none space-y-6 p-0"
+        >
           {educationEntries.map((entry) => (
-            <li
+            <motion.li
               key={entry.degree}
+              variants={staggerItem}
               className="rounded-xl border border-slate-200/80 bg-white/50 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -33,10 +50,10 @@ export function Education() {
                   </p>
                 </div>
               </div>
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </div>
+        </motion.ul>
+      </motion.div>
     </SectionMotion>
   );
 }

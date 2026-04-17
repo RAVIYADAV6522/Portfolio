@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
 import { achievementsAndActivities } from "@/data/portfolio";
+import { scrollLiftProps } from "@/lib/motion";
 
 export function AchievementsActivities() {
   return (
@@ -18,10 +19,7 @@ export function AchievementsActivities() {
           {achievementsAndActivities.map((item, i) => (
             <motion.li
               key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              {...scrollLiftProps(i)}
               className="flex gap-3 rounded-xl border border-slate-200/80 bg-white/50 p-5 text-base leading-relaxed text-slate-700 shadow-sm dark:border-slate-700 dark:bg-slate-800/40 dark:text-slate-300"
             >
               <span

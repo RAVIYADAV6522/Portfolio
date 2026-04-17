@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 import { contact, siteConfig } from "@/data/portfolio";
 import { SectionMotion } from "@/components/SectionMotion";
+import { springSnappy } from "@/lib/motion";
 
 export function Contact() {
   return (
@@ -25,14 +26,17 @@ export function Contact() {
           <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-gray-text">
             {contact.subheading}
           </p>
-          <a
+          <motion.a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(siteConfig.email)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex rounded-full bg-accent-mint px-8 py-3 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
+            className="mt-10 inline-flex rounded-full bg-accent-mint px-8 py-3 text-sm font-bold lowercase text-slate-900 shadow-sm"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.96 }}
+            transition={springSnappy}
           >
             {contact.cta}
-          </a>
+          </motion.a>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-sm font-medium text-slate-600 dark:text-slate-300">
             <a
               href={siteConfig.social.github}

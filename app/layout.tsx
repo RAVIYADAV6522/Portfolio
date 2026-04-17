@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
+import { PageLoader } from "@/components/PageLoader";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/data/portfolio";
 
@@ -52,7 +53,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} ${jetbrains.variable} min-h-[100dvh] overflow-x-hidden font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <PageLoader>{children}</PageLoader>
+        </ThemeProvider>
       </body>
     </html>
   );
