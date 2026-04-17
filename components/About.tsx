@@ -5,7 +5,7 @@ export function About() {
   return (
     <SectionMotion
       id="about"
-      className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
+      className="px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-10 md:px-8 md:pb-24 md:pt-12 lg:pb-28"
     >
       <div className="mx-auto max-w-content">
         <h2 className="font-heading text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl">
@@ -28,10 +28,12 @@ export function About() {
                     <strong className="font-semibold text-slate-900 dark:text-white">
                       {item.title}
                     </strong>
-                    <span className="text-slate-600 dark:text-slate-400">
-                      {" "}
-                      — {item.description}
-                    </span>
+                    {item.description ? (
+                      <span className="text-slate-600 dark:text-slate-400">
+                        {" "}
+                        — {item.description}
+                      </span>
+                    ) : null}
                   </span>
                 </li>
               ))}

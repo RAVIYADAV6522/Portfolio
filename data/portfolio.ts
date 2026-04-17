@@ -19,46 +19,34 @@ export const siteConfig = {
 
 export const hero = {
   greeting: "Hi, I'm Ravi Yadav 👋",
-  /** One-liner roles (shown below the greeting) */
+  /** Primary intro (shown below the greeting) */
   summaryLine:
-    "AIR 6522 in JEE Advanced '23 · Data Mining Researcher · Deep Learning Engineer · Competitive Programmer",
-  /** Secondary line: cohort & location */
-  metaLine: "CSE '27 · Jaipur, Rajasthan, India",
+    "Building intelligent systems through algorithms, AI/ML, and data-driven research. Passionate about solving complex problems with efficient and scalable solutions. AIR 6522 in JEE Advanced 2023.",
+  /** Secondary line: school & focus areas */
+  metaLine:
+    "B.Tech CSE @ Newton School of Technology | Exploring competitive programming, machine learning, and research.",
 };
 
 export type AboutJourneyItem = {
   title: string;
-  description: string;
+  /** Shown after an em dash; omit for a single-line bullet. */
+  description?: string;
 };
 
 export const about = {
   introParagraphs: [
-    "I'm a Computer Science undergraduate at Newton School of Technology (Batch '27) with a strong foundation in problem-solving, demonstrated by securing AIR 6522 in JEE Advanced 2023.",
-    "My core interests lie at the intersection of Competitive Programming, Data Mining, Machine Learning, and Deep Learning. I enjoy understanding how algorithmic thinking and mathematical intuition translate into real-world intelligent systems.",
-    "Competitive Programming has played a major role in shaping how I approach problems. It has taught me to think systematically, write efficient solutions, and appreciate the elegance of well-designed algorithms. Through this journey, I have developed a deep interest in algorithms, data structures, and system-level thinking.",
-    "Alongside this, I actively explore AI/ML systems and research, experimenting with models, studying neural architectures, and understanding the principles that power modern intelligent systems.",
+    "I'm a Computer Science undergraduate at Newton School of Technology (Batch '27), with AIR 6522 in JEE Advanced 2023.",
+    "I like working at the intersection of algorithms, AI/ML, and research—basically where mathematical thinking turns into real systems.",
+    "Competitive programming is where I built my core thinking: breaking down problems, writing efficient solutions, and understanding what actually works under constraints. Alongside that, I explore machine learning and deep learning by building, experimenting, and digging into how these systems work under the hood.",
   ],
-  journeyHeading:
-    "My journey currently revolves around three things I enjoy the most:",
+  journeyHeading: "Right now, I spend most of my time on:",
   journeyItems: [
-    {
-      title: "Competitive Programming",
-      description:
-        "solving algorithmic problems and writing optimized solutions",
-    },
-    {
-      title: "AI / ML Development & Research",
-      description: "building models and exploring intelligent systems",
-    },
-    {
-      title: "Teaching & Mentorship",
-      description:
-        "simplifying complex ideas and helping others build strong fundamentals",
-    },
-  ] satisfies AboutJourneyItem[],
+    { title: "Competitive Programming" },
+    { title: "AI/ML + research" },
+    { title: "Teaching concepts in a simple, intuitive way" },
+  ] as AboutJourneyItem[],
   closingParagraphs: [
-    "In the long run, I aspire to contribute to AI research and education, while also mentoring students in algorithms and problem-solving.",
-    "I'm always open to collaborations, research discussions, and projects involving algorithms, data mining, and machine learning.",
+    "I'm always open to collaborating on interesting problems, research ideas, or projects in algorithms, data mining, and machine learning.",
   ],
 };
 
@@ -324,6 +312,24 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/HackHeroic/Snake_game_os",
     description:
       "Built a real-time terminal-based Snake game in C from scratch, implementing custom OS-level libraries for memory management, string manipulation, math operations, screen rendering, and keyboard input. Designed a 64KB virtual memory allocator with first-fit and coalescing, non-blocking input handling, and dynamic gameplay with multiple modes, obstacles, and persistent statistics."
+  },
+  {
+    title: "Eats – Full-Stack Enterprise Food Delivery Ecosystem",
+    tags: [
+      "React",
+      "Redux Toolkit",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT Authentication",
+      "REST API",
+      "Full Stack Development",
+      "Cloudinary"
+    ],
+    githubUrl: "YOUR_GITHUB_LINK_HERE",
+    description:
+      "Engineered a full-stack food delivery platform using React, Redux Toolkit, TypeScript, Express, and MongoDB, implementing end-to-end flows for authentication, restaurant browsing, cart management, checkout, and order tracking. Designed a modular class-based backend architecture with JWT authentication, Mongoose data modeling, and RESTful APIs, and enhanced user experience with debounced cart synchronization, lazy loading, and cloud-based media handling."
   }
   
 ];

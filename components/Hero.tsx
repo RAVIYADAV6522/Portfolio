@@ -16,7 +16,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen min-h-[100dvh] flex-col justify-center px-4 pb-32 pt-20 sm:px-6 sm:pb-28 sm:pt-24 md:flex-row md:items-center md:px-8 md:py-24"
+      className="relative flex flex-col px-4 pb-12 pt-16 sm:px-6 sm:pb-14 sm:pt-20 md:flex-row md:items-center md:justify-between md:px-8 md:pb-16 md:pt-20"
     >
       <div className="mx-auto flex w-full min-w-0 max-w-content flex-col gap-8 sm:gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
         <motion.div

@@ -26,7 +26,9 @@ export function Contact() {
             {contact.subheading}
           </p>
           <a
-            href={`mailto:${siteConfig.email}`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(siteConfig.email)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-10 inline-flex rounded-full bg-accent-mint px-8 py-3 text-sm font-bold lowercase text-slate-900 shadow-sm transition hover:scale-105"
           >
             {contact.cta}
