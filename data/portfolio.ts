@@ -245,6 +245,8 @@ export type Project = {
   tags: string[];
   description: string;
   githubUrl?: string;
+  /** If set, the project card shows a "Demo" link next to GitHub. */
+  demoUrl?: string;
   reportUrl?: string;
 };
 
@@ -313,6 +315,28 @@ export const projects: Project[] = [
     description:
       "Built a real-time terminal-based Snake game in C from scratch, implementing custom OS-level libraries for memory management, string manipulation, math operations, screen rendering, and keyboard input. Designed a 64KB virtual memory allocator with first-fit and coalescing, non-blocking input handling, and dynamic gameplay with multiple modes, obstacles, and persistent statistics."
   },
+
+  {
+    title: "Smart Commerce AI Agent",
+    tags: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "LLM",
+      "Ollama",
+      "AI Agents",
+      "REST API",
+      "Conversational AI",
+      "System Design"
+    ],
+    githubUrl: "https://github.com/RAVIYADAV6522/Smart-Commerce-AI-Agent",
+    demoUrl: "https://smart-commerce-ai-agent.vercel.app/",
+    description:
+      "Engineered a conversational commerce platform using Express, React (Vite), and Tailwind CSS, leveraging tool-calling LLM agents (Ollama) to execute product search, cart, and checkout workflows over a catalog-backed backend in a decoupled frontend/API architecture. Architected a hybrid intent routing system combining deterministic fast paths (bypassing LLM) with a multi-step agent loop (up to 5 iterations) using structured JSON tool I/O, enabling reliable handling of both low-latency queries and complex multi-turn reasoning. Optimized performance by reducing multi-step agent latency from ~20s to sub-10s and achieving ~1s response time for fast-path queries, while improving production readiness through request validation, rate limiting, and bounded context management for scalable session handling."
+  },
+
   {
     title: "Eats – Full-Stack Enterprise Food Delivery Ecosystem",
     tags: [
@@ -327,7 +351,8 @@ export const projects: Project[] = [
       "Full Stack Development",
       "Cloudinary"
     ],
-    githubUrl: "YOUR_GITHUB_LINK_HERE",
+    githubUrl: "https://github.com/Ranvendra/Eats",
+    demoUrl: "https://eatindia.vercel.app/",
     description:
       "Engineered a full-stack food delivery platform using React, Redux Toolkit, TypeScript, Express, and MongoDB, implementing end-to-end flows for authentication, restaurant browsing, cart management, checkout, and order tracking. Designed a modular class-based backend architecture with JWT authentication, Mongoose data modeling, and RESTful APIs, and enhanced user experience with debounced cart synchronization, lazy loading, and cloud-based media handling."
   }

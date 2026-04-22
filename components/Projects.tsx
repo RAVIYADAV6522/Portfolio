@@ -65,6 +65,17 @@ export function Projects() {
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 )}
+                {project.demoUrl?.trim() && (
+                  <a
+                    href={project.demoUrl.trim()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-3 py-1 text-xs font-medium text-slate-700 transition hover:border-primary hover:text-primary dark:border-slate-600 dark:text-slate-200"
+                  >
+                    Demo
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
                 {project.reportUrl && (
                   <a
                     href={project.reportUrl}
