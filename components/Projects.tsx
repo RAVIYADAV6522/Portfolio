@@ -1,8 +1,9 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import { projects } from "@/data/portfolio";
+import { useId, useState } from "react";
+import type { Project } from "@/data/portfolio";
 import {
   scrollLiftProps,
   springSnappy,
@@ -11,10 +12,19 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
+const INITIAL_PROJECT_COUNT = 4;
+
 /**
  * Header uses stagger; cards use scroll “lift” with opacity 1 so they never stick invisible.
  */
-export function Projects() {
+export function Projects({ projects }: { projects: Project[] }) {
+  const [showAll, setShowAll] = useState(false);
+  const hasMore = projects.length > INITIAL_PROJECT_COUNT;
+  const visibleProjects = hasMore && !showAll
+    ? projects.slice(0, INITIAL_PROJECT_COUNT)
+    : projects;
+  const moreRegionId = useId();
+
   return (
     <section
       id="projects"
@@ -42,8 +52,11 @@ export function Projects() {
             Check out my latest work
           </motion.h2>
         </motion.div>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
-          {projects.map((project, i) => (
+        <div
+          className="mt-12 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2"
+          id={hasMore ? moreRegionId : undefined}
+        >
+          {visibleProjects.map((project, i) => (
             <motion.article
               key={`${project.title}-${i}`}
               {...scrollLiftProps(i)}
@@ -104,6 +117,32 @@ export function Projects() {
             </motion.article>
           ))}
         </div>
+        {hasMore && (
+          <div className="mt-8 flex justify-center sm:mt-10">
+            <motion.button
+              type="button"
+              onClick={() => setShowAll((s) => !s)}
+              aria-expanded={showAll}
+              aria-controls={moreRegionId}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/80 px-6 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-primary hover:text-primary dark:border-slate-600 dark:bg-slate-800/50 dark:text-slate-200 dark:hover:text-primary"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              transition={springSnappy}
+            >
+              {showAll ? (
+                <>
+                  See less
+                  <ChevronUp className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+                </>
+              ) : (
+                <>
+                  See more
+                  <ChevronDown className="h-4 w-4" strokeWidth={2.5} aria-hidden />
+                </>
+              )}
+            </motion.button>
+          </div>
+        )}
       </div>
     </section>
   );

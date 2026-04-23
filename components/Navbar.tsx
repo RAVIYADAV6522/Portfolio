@@ -14,8 +14,8 @@ import {
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useState } from "react";
-import { siteConfig } from "@/data/portfolio";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { SiteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 type IconComp = ComponentType<{ className?: string }>;
 
@@ -24,34 +24,37 @@ type DockItem =
   | { kind: "link"; href: string; label: string; Icon: IconComp }
   | { kind: "theme"; label: string };
 
-const items: DockItem[] = [
-  { kind: "scroll", id: "hero", label: "Home", Icon: Home },
-  { kind: "scroll", id: "work-experience", label: "Work", Icon: Briefcase },
-  { kind: "scroll", id: "about", label: "About", Icon: User },
-  { kind: "scroll", id: "skills", label: "Skills", Icon: PenLine },
-  { kind: "link", href: siteConfig.social.github, label: "GitHub", Icon: FaGithub },
-  {
-    kind: "link",
-    href: siteConfig.social.linkedin,
-    label: "LinkedIn",
-    Icon: FaLinkedin,
-  },
-  {
-    kind: "link",
-    href: siteConfig.social.leetcode,
-    label: "LeetCode",
-    Icon: SiLeetcode,
-  },
-  { kind: "theme", label: "Theme" },
-];
+function buildDockItems(siteConfig: SiteConfig): DockItem[] {
+  return [
+    { kind: "scroll", id: "hero", label: "Home", Icon: Home },
+    { kind: "scroll", id: "work-experience", label: "Work", Icon: Briefcase },
+    { kind: "scroll", id: "about", label: "About", Icon: User },
+    { kind: "scroll", id: "skills", label: "Skills", Icon: PenLine },
+    { kind: "link", href: siteConfig.social.github, label: "GitHub", Icon: FaGithub },
+    {
+      kind: "link",
+      href: siteConfig.social.linkedin,
+      label: "LinkedIn",
+      Icon: FaLinkedin,
+    },
+    {
+      kind: "link",
+      href: siteConfig.social.leetcode,
+      label: "LeetCode",
+      Icon: SiLeetcode,
+    },
+    { kind: "theme", label: "Theme" },
+  ];
+}
 
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
-export function Navbar() {
+export function Navbar({ siteConfig }: { siteConfig: SiteConfig }) {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const items = useMemo(() => buildDockItems(siteConfig), [siteConfig]);
 
   useEffect(() => {
     setMounted(true);

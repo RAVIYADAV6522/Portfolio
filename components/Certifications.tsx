@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { SectionMotion } from "@/components/SectionMotion";
-import { certifications } from "@/data/portfolio";
+import type { Certification } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
-export function Certifications() {
+export function Certifications({ certifications }: { certifications: Certification[] }) {
   return (
     <SectionMotion
       id="certifications"

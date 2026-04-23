@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { hero, siteConfig } from "@/data/portfolio";
+import type { HeroContent, SiteConfig } from "@/data/portfolio";
 import { springSnappy } from "@/lib/motion";
 import { TypewriterText } from "@/components/TypewriterText";
 
@@ -15,7 +15,9 @@ const child = {
 const ctaMotion =
   "inline-flex rounded-full px-6 py-2 text-sm font-bold lowercase text-slate-900 shadow-sm";
 
-export function Hero() {
+type HeroProps = { hero: HeroContent; siteConfig: SiteConfig };
+
+export function Hero({ hero, siteConfig }: HeroProps) {
   const [avatarSrc, setAvatarSrc] = useState(siteConfig.profileImage);
 
   return (

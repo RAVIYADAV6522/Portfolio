@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { about } from "@/data/portfolio";
+import type { AboutContent } from "@/data/portfolio";
 import { staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
-export function About() {
+export function About({ about }: { about: AboutContent }) {
   return (
     <section
       id="about"

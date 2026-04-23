@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
-import { educationEntries } from "@/data/portfolio";
+import type { EducationEntry } from "@/data/portfolio";
 import { staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
-export function Education() {
+export function Education({ educationEntries }: { educationEntries: EducationEntry[] }) {
   return (
     <SectionMotion
       id="education"

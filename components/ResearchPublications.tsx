@@ -2,10 +2,10 @@
 
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import { publications } from "@/data/portfolio";
+import type { Publication } from "@/data/portfolio";
 import { scrollLiftProps, staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
-export function ResearchPublications() {
+export function ResearchPublications({ publications }: { publications: Publication[] }) {
   if (publications.length === 0) {
     return null;
   }

@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
-import { achievementsAndActivities } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
-export function AchievementsActivities() {
+export function AchievementsActivities({
+  achievementsAndActivities,
+}: {
+  achievementsAndActivities: string[];
+}) {
   return (
     <SectionMotion
       id="achievements"

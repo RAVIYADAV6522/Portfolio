@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
-import { contact, siteConfig } from "@/data/portfolio";
+import type { ContactContent, SiteConfig } from "@/data/portfolio";
 import { SectionMotion } from "@/components/SectionMotion";
 import { springSnappy } from "@/lib/motion";
 
-export function Contact() {
+export function Contact({ contact, siteConfig }: { contact: ContactContent; siteConfig: SiteConfig }) {
   return (
     <SectionMotion
       id="contact"

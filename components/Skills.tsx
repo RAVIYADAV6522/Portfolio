@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { SectionMotion } from "@/components/SectionMotion";
-import { skillsByCategory } from "@/data/portfolio";
+import type { SkillCategory } from "@/data/portfolio";
 import { springSnappy, staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
-export function Skills() {
+export function Skills({ skillsByCategory }: { skillsByCategory: SkillCategory[] }) {
   return (
     <SectionMotion
       id="skills"

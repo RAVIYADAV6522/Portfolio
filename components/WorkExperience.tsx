@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionMotion } from "@/components/SectionMotion";
 import { DrummingMonkey } from "@/components/DrummingMonkey";
-import { workExperience } from "@/data/portfolio";
+import type { WorkEntry } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
-export function WorkExperience() {
+export function WorkExperience({ workExperience }: { workExperience: WorkEntry[] }) {
   const internshipsHeaderRef = useRef<HTMLDivElement>(null);
   const internshipsInView = useInView(internshipsHeaderRef, {
     amount: 0.55,

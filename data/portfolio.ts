@@ -277,45 +277,10 @@ export const projects: Project[] = [
       "Deep Learning",
     ],
     githubUrl: "https://github.com/HackHeroic/optiforge",
+    demoUrl: "https://optiforge.streamlit.app/",
     description:
       "Developed a neural option pricing system integrating LSTM models benchmarked against Black-Scholes for quantitative comparison. Analytical pricing.",
   },
-
-  {
-    title: "AI-Powered File Organizer with OS-Level System Calls",
-    tags: [
-      "C",
-      "Operating Systems",
-      "Next.js",
-      "Node.js",
-      "AI",
-      "Semantic Search",
-      "LLM",
-      "Full Stack",
-      "System Design"
-    ],
-    githubUrl: "https://github.com/HackHeroic/file_organizer",
-    description:
-      "Developed a full-stack intelligent file management system combining low-level OS system calls in C with a Next.js web interface. Implemented natural language command execution, semantic search across PDFs/images/text, AI-based auto-tagging, and an autonomous agent for multi-step file organization with safety constraints and human-in-the-loop confirmation."
-  },
-
-  {
-    title: "Snake Game OS with Custom Memory Allocator and Terminal Engine",
-    tags: [
-      "C",
-      "Operating Systems",
-      "Memory Management",
-      "System Programming",
-      "Data Structures",
-      "Game Development",
-      "Low Level Programming",
-      "Terminal Rendering"
-    ],
-    githubUrl: "https://github.com/HackHeroic/Snake_game_os",
-    description:
-      "Built a real-time terminal-based Snake game in C from scratch, implementing custom OS-level libraries for memory management, string manipulation, math operations, screen rendering, and keyboard input. Designed a 64KB virtual memory allocator with first-fit and coalescing, non-blocking input handling, and dynamic gameplay with multiple modes, obstacles, and persistent statistics."
-  },
-
   {
     title: "Smart Commerce AI Agent",
     tags: [
@@ -355,7 +320,44 @@ export const projects: Project[] = [
     demoUrl: "https://eatindia.vercel.app/",
     description:
       "Engineered a full-stack food delivery platform using React, Redux Toolkit, TypeScript, Express, and MongoDB, implementing end-to-end flows for authentication, restaurant browsing, cart management, checkout, and order tracking. Designed a modular class-based backend architecture with JWT authentication, Mongoose data modeling, and RESTful APIs, and enhanced user experience with debounced cart synchronization, lazy loading, and cloud-based media handling."
+  },
+
+  {
+    title: "AI-Powered File Organizer with OS-Level System Calls",
+    tags: [
+      "C",
+      "Operating Systems",
+      "Next.js",
+      "Node.js",
+      "AI",
+      "Semantic Search",
+      "LLM",
+      "Full Stack",
+      "System Design"
+    ],
+    githubUrl: "https://github.com/HackHeroic/file_organizer",
+    description:
+      "Developed a full-stack intelligent file management system combining low-level OS system calls in C with a Next.js web interface. Implemented natural language command execution, semantic search across PDFs/images/text, AI-based auto-tagging, and an autonomous agent for multi-step file organization with safety constraints and human-in-the-loop confirmation."
+  },
+
+  {
+    title: "Snake Game OS with Custom Memory Allocator and Terminal Engine",
+    tags: [
+      "C",
+      "Operating Systems",
+      "Memory Management",
+      "System Programming",
+      "Data Structures",
+      "Game Development",
+      "Low Level Programming",
+      "Terminal Rendering"
+    ],
+    githubUrl: "https://github.com/HackHeroic/Snake_game_os",
+    description:
+      "Built a real-time terminal-based Snake game in C from scratch, implementing custom OS-level libraries for memory management, string manipulation, math operations, screen rendering, and keyboard input. Designed a 64KB virtual memory allocator with first-fit and coalescing, non-blocking input handling, and dynamic gameplay with multiple modes, obstacles, and persistent statistics."
   }
+
+
   
 ];
 
@@ -370,3 +372,9 @@ export const contact = {
     "I'm currently open to new opportunities. Whether you have a question, a project idea, or just want to say hi — my inbox is always open!",
   cta: "Say Hello →",
 };
+
+/** Shapes for props — `app/page.tsx` (Server Component) passes these in so edits to this file re-render the UI via fresh server output. */
+export type SiteConfig = typeof siteConfig;
+export type HeroContent = typeof hero;
+export type AboutContent = typeof about;
+export type ContactContent = typeof contact;

@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { EatingPanda } from "@/components/EatingPanda";
 import { SectionMotion } from "@/components/SectionMotion";
-import { honorsAwards } from "@/data/portfolio";
+import type { Award } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
-export function HonorsAwards() {
+export function HonorsAwards({ honorsAwards }: { honorsAwards: Award[] }) {
   const honorsHeaderRef = useRef<HTMLDivElement>(null);
   const honorsInView = useInView(honorsHeaderRef, {
     amount: 0.55,
