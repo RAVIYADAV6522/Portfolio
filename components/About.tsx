@@ -29,30 +29,6 @@ export function About({ about }: { about: AboutContent }) {
           </motion.p>
         ))}
 
-        <motion.div variants={staggerItem}>
-          <p className="font-medium text-slate-800 dark:text-slate-200">
-            {about.journeyHeading}
-          </p>
-          <ul className="mt-4 list-none space-y-3 pl-0">
-            {about.journeyItems.map((item) => (
-              <li key={item.title} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                <span>
-                  <strong className="font-semibold text-slate-900 dark:text-white">
-                    {item.title}
-                  </strong>
-                  {item.description ? (
-                    <span className="text-slate-600 dark:text-slate-400">
-                      {" "}
-                      — {item.description}
-                    </span>
-                  ) : null}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
         {about.closingParagraphs.map((p, i) => (
           <motion.p key={`close-${i}`} variants={staggerItem}>
             {p}

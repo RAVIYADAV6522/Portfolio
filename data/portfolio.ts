@@ -27,26 +27,14 @@ export const hero = {
     "B.Tech CSE @ Newton School of Technology | Exploring competitive programming, machine learning, and research.",
 };
 
-export type AboutJourneyItem = {
-  title: string;
-  /** Shown after an em dash; omit for a single-line bullet. */
-  description?: string;
-};
-
 export const about = {
   introParagraphs: [
-    "I'm a Computer Science undergraduate at Newton School of Technology (Batch '27), with AIR 6522 in JEE Advanced 2023.",
-    "I like working at the intersection of algorithms, AI/ML, and research—basically where mathematical thinking turns into real systems.",
-    "Competitive programming is where I built my core thinking: breaking down problems, writing efficient solutions, and understanding what actually works under constraints. Alongside that, I explore machine learning and deep learning by building, experimenting, and digging into how these systems work under the hood.",
+    "I'm a Computer Science undergraduate at Newton School of Technology (Batch '27), working at the intersection of algorithms, backend engineering, and machine learning.",
+    "Competitive programming taught me to think precisely under constraints. Backend engineering taught me to build systems that scale. ML gives me a space to experiment and understand how things work beneath the surface — not just make them run.",
+    "Outside of building, I enjoy breaking down complex ideas into intuitive explanations, because clarity of thought and clarity of communication usually go hand in hand.",
   ],
-  journeyHeading: "Right now, I spend most of my time on:",
-  journeyItems: [
-    { title: "Competitive Programming" },
-    { title: "AI/ML + research" },
-    { title: "Teaching concepts in a simple, intuitive way" },
-  ] as AboutJourneyItem[],
   closingParagraphs: [
-    "I'm always open to collaborating on interesting problems, research ideas, or projects in algorithms, data mining, and machine learning.",
+    "Open to collaborating on backend architecture, algorithmic problems, or research in ML and data.",
   ],
 };
 
@@ -243,7 +231,8 @@ export const publications: Publication[] = [
 export type Project = {
   title: string;
   tags: string[];
-  description: string;
+  /** Resume-style impact bullets; use at least three per project. */
+  bullets: string[];
   githubUrl?: string;
   /** If set, the project card shows a "Demo" link next to GitHub. */
   demoUrl?: string;
@@ -263,8 +252,11 @@ export const projects: Project[] = [
       "Graph Theory",
     ],
     githubUrl: "https://github.com/HackHeroic/Watt-IF",
-    description:
-      "Conducted large-scale electricity consumption and generation mining using XGBoost, TFT, and deep learning models, achieving improved demand forecasting through advanced feature engineering. Modeled the U.S. power grid as a weighted directed graph and applied max-flow min-cut analysis to identify critical transmission bottlenecks and simulate cascading failure scenarios for Efficient Resource Allocation.",
+    bullets: [
+      "Mined large-scale consumption and generation data with XGBoost, TFT, and deep learning; improved demand forecasting with rigorous feature engineering.",
+      "Modeled the U.S. power grid as a weighted directed graph and applied max-flow / min-cut analysis to surface critical transmission bottlenecks.",
+      "Simulated cascading failure scenarios to support resilience analysis and more efficient long-term resource allocation across the network.",
+    ],
   },
   
   {
@@ -278,8 +270,11 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/HackHeroic/optiforge",
     demoUrl: "https://optiforge.streamlit.app/",
-    description:
-      "Developed a neural option pricing system integrating LSTM models benchmarked against Black-Scholes for quantitative comparison. Analytical pricing.",
+    bullets: [
+      "Built a neural options pricing stack with LSTM models benchmarked side-by-side against Black–Scholes for fair quantitative comparison.",
+      "Layered in GARCH-style volatility and analytical pricing so classical and learned estimators can be evaluated on the same surfaces.",
+      "Packaged a Streamlit demo for interactive exploration and faster iteration on model behavior and error profiles.",
+    ],
   },
   {
     title: "Smart Commerce AI Agent",
@@ -298,8 +293,11 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/RAVIYADAV6522/Smart-Commerce-AI-Agent",
     demoUrl: "https://smart-commerce-ai-agent.vercel.app/",
-    description:
-      "Engineered a conversational commerce platform using Express, React (Vite), and Tailwind CSS, leveraging tool-calling LLM agents (Ollama) to execute product search, cart, and checkout workflows over a catalog-backed backend in a decoupled frontend/API architecture. Architected a hybrid intent routing system combining deterministic fast paths (bypassing LLM) with a multi-step agent loop (up to 5 iterations) using structured JSON tool I/O, enabling reliable handling of both low-latency queries and complex multi-turn reasoning. Optimized performance by reducing multi-step agent latency from ~20s to sub-10s and achieving ~1s response time for fast-path queries, while improving production readiness through request validation, rate limiting, and bounded context management for scalable session handling."
+    bullets: [
+      "Engineered a conversational commerce platform (Express, React, Vite, Tailwind) with Ollama tool-calling to run search, cart, and checkout against a catalog-backed, decoupled API.",
+      "Shipped hybrid intent routing: deterministic fast paths for low-latency turns plus a multi-step agent (up to 5 iterations) with structured JSON tool I/O for complex flows.",
+      "Improved real-world performance: cut multi-step agent latency from ~20s to under ~10s and ~1s on fast paths; added validation, rate limiting, and bounded session context.",
+    ],
   },
 
   {
@@ -318,8 +316,11 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/Ranvendra/Eats",
     demoUrl: "https://eatindia.vercel.app/",
-    description:
-      "Engineered a full-stack food delivery platform using React, Redux Toolkit, TypeScript, Express, and MongoDB, implementing end-to-end flows for authentication, restaurant browsing, cart management, checkout, and order tracking. Designed a modular class-based backend architecture with JWT authentication, Mongoose data modeling, and RESTful APIs, and enhanced user experience with debounced cart synchronization, lazy loading, and cloud-based media handling."
+    bullets: [
+      "Delivered end-to-end food delivery flows—authentication, restaurant browse, cart, checkout, and order tracking—on React, Redux Toolkit, TypeScript, Express, and MongoDB.",
+      "Designed a modular, class-based backend with JWT auth, Mongoose data modeling, and versioned REST APIs for scalable feature growth.",
+      "Polished UX with debounced cart synchronization, route-level lazy loading, and Cloudinary-backed media for menus and item imagery.",
+    ],
   },
 
   {
@@ -336,8 +337,11 @@ export const projects: Project[] = [
       "System Design"
     ],
     githubUrl: "https://github.com/HackHeroic/file_organizer",
-    description:
-      "Developed a full-stack intelligent file management system combining low-level OS system calls in C with a Next.js web interface. Implemented natural language command execution, semantic search across PDFs/images/text, AI-based auto-tagging, and an autonomous agent for multi-step file organization with safety constraints and human-in-the-loop confirmation."
+    bullets: [
+      "Connected low-level C system calls to a Next.js/Node full-stack app for file operations, natural-language commands, and cross-format semantic search (PDF, images, text).",
+      "Implemented AI-assisted auto-tagging and a multi-step autonomous organizer with explicit safety rules and user confirmation for risky actions.",
+      "Tuned the agent for predictable tool use and context limits so long-running organization tasks stay controllable in real directories.",
+    ],
   },
 
   {
@@ -353,8 +357,11 @@ export const projects: Project[] = [
       "Terminal Rendering"
     ],
     githubUrl: "https://github.com/HackHeroic/Snake_game_os",
-    description:
-      "Built a real-time terminal-based Snake game in C from scratch, implementing custom OS-level libraries for memory management, string manipulation, math operations, screen rendering, and keyboard input. Designed a 64KB virtual memory allocator with first-fit and coalescing, non-blocking input handling, and dynamic gameplay with multiple modes, obstacles, and persistent statistics."
+    bullets: [
+      "Implemented a real-time terminal Snake game in C with custom string, math, screen, and input abstractions to stay close to the metal.",
+      "Built a 64KB virtual memory allocator (first-fit + coalescing) and non-blocking keyboard input for smooth frame-by-frame play.",
+      "Added multiple modes, obstacles, and persistent stats while keeping the binary footprint and runtime costs suitable for terminal constraints.",
+    ],
   }
 
 

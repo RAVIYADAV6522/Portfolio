@@ -101,9 +101,13 @@ export function Projects({ projects }: { projects: Project[] }) {
                   </a>
                 )}
               </div>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                {project.description}
-              </p>
+              <ul className="mt-4 flex-1 list-disc space-y-2 pl-5 text-sm leading-relaxed text-slate-600 marker:text-slate-400 dark:text-slate-300 dark:marker:text-slate-500">
+                {project.bullets.map((line, bi) => (
+                  <li key={`${i}-b-${bi}`} className="pl-0.5 text-pretty">
+                    {line}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag, ti) => (
                   <span
