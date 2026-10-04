@@ -114,11 +114,11 @@ export const honorsAwards: Award[] = [
       "Secured All India Rank (AIR) 24875 in JEE Main 2023 with a 97.84 percentile. OBC-NCL category rank: 6397.",
   },
   {
-    title: "Under-16 Jaipur Cricket Team",
+    title: "Jaipur Under-16 Cricket Team",
     org: "Jaipur district cricket",
     year: "2017 – 2018",
     description:
-      "Member of the Jaipur Under-16 Cricket Team as an opening batsman and part-time wicket keeper.",
+      "Represented Jaipur as an opening batsman and part-time wicketkeeper.",
   },
 ];
 
