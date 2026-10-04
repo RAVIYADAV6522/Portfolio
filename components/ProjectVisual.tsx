@@ -38,6 +38,8 @@ export function ProjectVisual({ kind }: { kind: ProjectVisualKind }) {
         {kind === "delivery" && <DeliveryScene />}
         {kind === "files" && <FilesScene />}
         {kind === "snake" && <SnakeScene />}
+        {kind === "search" && <SearchScene />}
+        {kind === "forest" && <ForestScene />}
       </svg>
     </div>
   );
@@ -252,6 +254,67 @@ function SnakeScene() {
         </rect>
       ))}
       <text x={222} y={140} className="pv-mono">64KB heap · ok</text>
+    </g>
+  );
+}
+
+/* ---------- PrepLens: search → interview experiences stream in with upvotes ---------- */
+const RESULTS = [
+  { y: 52, tag: "Round 2 · DSA", votes: 42, w: 96 },
+  { y: 86, tag: "HR · Behavioural", votes: 27, w: 116 },
+  { y: 120, tag: "System Design", votes: 18, w: 100 },
+];
+function SearchScene() {
+  return (
+    <g>
+      <rect x="18" y="12" width="284" height="28" rx="14" className="pv-card" />
+      <circle cx="36" cy="25" r="5" className="pv-search-icon" />
+      <line x1="40" y1="29" x2="44" y2="33" className="pv-search-icon" />
+      <text x="52" y="29" className="pv-label">Google · SDE interview</text>
+      <rect x="160" y="19" width="1.5" height="12" className="pv-caret" />
+      {RESULTS.map((r, i) => (
+        <g key={r.tag} className="pv-seq" style={{ animationDelay: `${0.6 + i * 0.7}s` }}>
+          <rect x="18" y={r.y} width="284" height="28" rx="8" className="pv-card" />
+          <rect x="28" y={r.y + 8} width={r.w} height="12" rx="6" className="pv-price" />
+          <text x="34" y={r.y + 17} className="pv-tag-text">{r.tag}</text>
+          <rect x={r.w + 40} y={r.y + 10} width={200 - r.w} height="8" rx="4" className="pv-line pv-line-soft" />
+          <path d={`M262 ${r.y + 17} l5 -6 l5 6 z`} className="pv-node" />
+          <text x="278" y={r.y + 18} className="pv-label">{r.votes}</text>
+        </g>
+      ))}
+    </g>
+  );
+}
+
+/* ---------- ForestLens: scan a satellite tile and box each detected crown ---------- */
+const CROWNS: [number, number, number][] = [
+  [52, 46, 15], [96, 92, 18], [44, 118, 13], [146, 40, 14], [168, 108, 17],
+  [214, 62, 16], [262, 98, 13], [282, 44, 12], [126, 126, 10],
+];
+function ForestScene() {
+  return (
+    <g>
+      <rect x="14" y="14" width="292" height="132" rx="10" className="pv-tile" />
+      {CROWNS.map(([x, y, r], i) => (
+        <g key={i}>
+          <circle cx={x} cy={y} r={r} className="pv-crown" />
+          <circle cx={x - r * 0.3} cy={y - r * 0.3} r={r * 0.45} className="pv-crown-hi" />
+          <rect
+            x={x - r - 3}
+            y={y - r - 3}
+            width={(r + 3) * 2}
+            height={(r + 3) * 2}
+            rx="3"
+            className="pv-bbox"
+            style={{ animationDelay: `${(x / 300) * 2.4}s` }}
+          />
+        </g>
+      ))}
+      <rect x="14" y="14" width="3" height="132" className="pv-scan" />
+      <g transform="translate(206 128)">
+        <rect width="94" height="22" rx="11" className="pv-card" />
+        <text x="47" y="14.5" textAnchor="middle" className="pv-label">71 trees/ha</text>
+      </g>
     </g>
   );
 }

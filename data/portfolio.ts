@@ -246,7 +246,9 @@ export type ProjectVisualKind =
   | "chat"
   | "delivery"
   | "files"
-  | "snake";
+  | "snake"
+  | "search"
+  | "forest";
 
 export const projectCategories: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "all", label: "All" },
@@ -293,6 +295,51 @@ export const projects: Project[] = [
     ],
   },
   
+  {
+    title: "PrepLens – Interview Knowledge Platform",
+    categories: ["fullstack"],
+    visual: "search",
+    tags: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Google OAuth",
+      "REST API",
+      "Vercel",
+      "Render",
+    ],
+    githubUrl: "https://github.com/RAVIYADAV6522/PrepLens",
+    demoUrl: "https://preplens-umber.vercel.app/",
+    bullets: [
+      "Built and deployed PrepLens, a full-stack interview knowledge platform for approximately 2,000 B.Tech students at NST, enabling company-specific preparation through a searchable archive of interview rounds, questions, and student experiences, designed to help students save 10+ hours of unstructured preparation.",
+      "Owned end-to-end product development, including database design, Node.js/Express REST APIs, UI, authentication, search, filters, upvotes, bookmarks, user profiles, and admin moderation, helping students leverage peers’ previous interview experiences for targeted preparation.",
+      "Implemented verified college-account authentication with anonymity controls, deployed through Vercel and Render, and integrated caching and 107 automated tests to support reliable, privacy-conscious knowledge sharing.",
+    ],
+  },
+  {
+    title: "ForestLens – Tree Crown Detection & Canopy Area Estimation",
+    categories: ["ai"],
+    visual: "forest",
+    tags: [
+      "Python",
+      "PyTorch",
+      "DeepForest",
+      "Rasterio",
+      "Streamlit",
+      "Computer Vision",
+      "Geospatial ML",
+    ],
+    githubUrl: "https://github.com/RAVIYADAV6522/forestlens",
+    demoUrl: "https://forestlens-cujmcn43y5s8ev8vguauez.streamlit.app/",
+    bullets: [
+      "Built and deployed a geospatial ML web application for individual tree crown detection and canopy area estimation from high-resolution satellite imagery using DeepForest, Rasterio, and Streamlit.",
+      "Diagnosed and fixed a hidden DeepForest tile-scale dependency that fragmented crowns across tile sizes, improving crown geometry consistency and pipeline reproducibility.",
+      "Investigated native-resolution detection failures through documented scale matching, reaching 71 trees/ha with 5.2 m crowns while explicitly reporting uncertainty and withholding unsupported measurements.",
+    ],
+  },
   {
     title: "Optiforge Neural Options Pricing",
     categories: ["ai"],
