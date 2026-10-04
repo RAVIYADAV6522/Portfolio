@@ -3,6 +3,8 @@ export const siteConfig = {
   metaTitle: "Ravi Yadav | AI/ML Researcher · IEEE APPEEC 2026 Co-Author",
   metaDescription:
     "AI undergraduate (B.Tech '27) at Newton School of Technology building intelligent, scalable systems. Co-author of a physics-informed load forecasting paper at IEEE APPEEC 2026, Singapore.",
+  /** Production URL (no trailing slash) — used for canonical URL, sitemap, robots and share previews. */
+  siteUrl: "https://raviyadav6522.vercel.app",
   email: "yadavr74839@gmail.com",
   /** File must live in `public/` with this exact name. Commit + push so Vercel serves it. */
   resumePath: "/RaviYadav_Resume.pdf",

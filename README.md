@@ -36,15 +36,9 @@ Almost all copy, links, and lists live in **`data/portfolio.ts`**:
 - **`public/RaviYadav_Resume.pdf`** — resume opened from the Hero “resume” button
 - **`public/profile-photo.jpg`** — Hero profile photo (or change `siteConfig.profileImage` in `data/portfolio.ts`). If the file is missing, the site falls back to `public/avatar.svg`. Use a square image (about 400×400px or larger) for best results.
 
-## Environment
+## Site URL
 
-Optional, for correct Open Graph / canonical URLs in production:
-
-```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-```
-
-If unset, metadata falls back to `http://localhost:3000` during development.
+The production URL lives in `siteConfig.siteUrl` (`data/portfolio.ts`). It drives the canonical URL, `sitemap.xml`, `robots.txt` and share previews — update it if the domain changes.
 
 ## Project structure
 
@@ -87,14 +81,7 @@ The UI uses responsive Tailwind breakpoints (`sm`, `md`, `lg`), a horizontally s
    - **Build Command:** `npm run build` (default).
    - **Output Directory:** leave default (Next.js handles this).
 
-3. **Environment variable**
-   - **Settings → Environment Variables**
-   - Name: `NEXT_PUBLIC_SITE_URL`
-   - Value: your production URL, e.g. `https://your-project.vercel.app` (use your real domain after the first deploy; update if you add a custom domain).
-   - Enable for **Production** (and **Preview** if you want correct OG URLs on PR previews).
-   - Redeploy after saving.
-
-4. **Deploy** — Vercel builds on every push to `main`.
+3. **Deploy** — Vercel builds on every push to `main`.
 
 **CLI (optional):** install [Vercel CLI](https://vercel.com/docs/cli), run `npm i -g vercel`, then from the project folder run `vercel` and follow the prompts (links the folder to a project and deploys).
 
@@ -106,7 +93,6 @@ Any platform that runs **Node.js** and supports **Next.js** (e.g. Netlify with t
 - Build: `npm run build`
 - Start: `npm run start` (not `next dev`)
 
-Set `NEXT_PUBLIC_SITE_URL` in that platform’s env UI the same way as on Vercel.
 
 ---
 
