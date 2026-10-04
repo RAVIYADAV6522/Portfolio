@@ -7,7 +7,7 @@ export const siteConfig = {
   /** File must live in `public/` with this exact name. Commit + push so Vercel serves it. */
   resumePath: "/RaviYadav_Resume.pdf",
   /** Bump this every time you replace the PDF (same filename) so the link changes and caches invalidate. */
-  resumeCacheKey: "4",
+  resumeCacheKey: "5",
   /** Photo in `public/` — e.g. `/profile.jpeg` or `/profile.png` (square, ≥256×256 recommended). */
   profileImage: "/profile-photo.jpg",
   social: {
