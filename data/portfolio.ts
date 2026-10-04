@@ -208,20 +208,28 @@ export const certifications: Certification[] = [
 
 export type Publication = {
   title: string;
+  /** Author list in citation order; names matching `siteConfig.name` are bolded. */
+  authors?: string[];
+  /** Venue / status line shown under the authors. */
   status: string;
+  bullets?: string[];
   githubUrl: string;
+  githubLabel?: string;
 };
 
 export const publications: Publication[] = [
   {
-    title: "Watt-IF: Electricity Data Mining and Grid Resilience Research",
-    status: "Research project (work in progress) – 2025",
+    title: "KAT-PatchTST: Physics-Informed Forecasting with Kirchhoff Conservation",
+    authors: ["C. Murali Madhav", "Ravi Yadav", "K. Mehra", "A. Tewary", "S. Aggarwal"],
+    status:
+      "18th Asia Pacific Power and Energy Engineering Conference (APPEEC), Singapore · August 2026 · IEEE · Paper ID 190",
+    bullets: [
+      "Accepted and presented at IEEE APPEEC 2026; conference proceedings publication pending.",
+      "Stage 1 of the Watt-IF research project; Stages 2 and 3 under active development, targeting ICML.",
+      "Provisional patent filed.",
+    ],
     githubUrl: "https://github.com/HackHeroic/Watt-IF",
-  },
-  {
-    title: "Optiforge: Neural Options Pricing with LSTM and GARCH Volatility",
-    status: "Research project (work in progress) – 2025",
-    githubUrl: "https://github.com/HackHeroic/optiforge",
+    githubLabel: "Watt-IF on GitHub",
   },
 ];
 

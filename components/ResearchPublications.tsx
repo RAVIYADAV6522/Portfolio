@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import type { Publication } from "@/data/portfolio";
+import { siteConfig, type Publication } from "@/data/portfolio";
 import { scrollLiftProps, staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
 export function ResearchPublications({ publications }: { publications: Publication[] }) {
@@ -52,14 +52,37 @@ export function ResearchPublications({ publications }: { publications: Publicati
                 {pub.title}
                 <ExternalLink className="mt-1 h-4 w-4 shrink-0 opacity-60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
               </a>
-              <span className="text-sm text-gray-text">{pub.status}</span>
+              {pub.authors && (
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  {pub.authors.map((name, ai) => (
+                    <span key={name}>
+                      {name === siteConfig.name ? (
+                        <strong className="font-semibold text-slate-900 dark:text-white">
+                          {name}
+                        </strong>
+                      ) : (
+                        name
+                      )}
+                      {ai < pub.authors!.length - 1 && ", "}
+                    </span>
+                  ))}
+                </p>
+              )}
+              <span className="text-sm italic text-gray-text">{pub.status}</span>
+              {pub.bullets && (
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  {pub.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              )}
               <a
                 href={pub.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-fit items-center gap-1 text-sm font-medium text-slate-700 hover:text-primary dark:text-slate-300"
               >
-                GitHub repository
+                {pub.githubLabel ?? "GitHub repository"}
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </motion.li>
