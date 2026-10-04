@@ -287,9 +287,9 @@ export const projects: Project[] = [
     ],
     githubUrl: "https://github.com/HackHeroic/Watt-IF",
     bullets: [
-      "Mined large-scale consumption and generation data with XGBoost, TFT, and deep learning; improved demand forecasting with rigorous feature engineering.",
-      "Modeled the U.S. power grid as a weighted directed graph and applied max-flow / min-cut analysis to surface critical transmission bottlenecks.",
-      "Simulated cascading failure scenarios to support resilience analysis and more efficient long-term resource allocation across the network.",
+      "KAT-PatchTST (Stage 1, 2nd author): Developed a physics-informed BA-aggregate load forecasting framework combining Channel-Independent PatchTST, TimeXer cross-attention, Kirchhoff conservation regularization, and ReLoBRaLo dynamic loss balancing. Achieved 3.55% demand MAPE across six BAs on the EIA930 protocol using a 168-hour context window (30% shorter than the published 240-hour baseline) and approximately 0.6M parameters, making the model 3–10× leaner than comparators.",
+      "Stage 2 (In Development): Extending the forecasting framework toward operational feasibility analysis over the BA interchange network to identify systemic bottlenecks and quantify node criticality from forecasted grid states.",
+      "Stage 3 (In Development): Developing a conditional grid partitioning policy to minimize allocation failures under forecasted operating conditions, motivated by ORNL’s reported $121B annual cost of major U.S. power outages in 2024.",
     ],
   },
   
