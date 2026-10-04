@@ -21,10 +21,7 @@ export const hero = {
   greeting: "Hi, I'm Ravi Yadav 👋",
   /** Primary intro (shown below the greeting) */
   summaryLine:
-    "Building intelligent systems through algorithms, AI/ML, and data-driven research. Passionate about solving complex problems with efficient and scalable solutions. AIR 6522 in JEE Advanced 2023.",
-  /** Secondary line: school & focus areas */
-  metaLine:
-    "B.Tech CSE @ Newton School of Technology | Exploring competitive programming, machine learning, and research.",
+    "Building Intelligent, Scalable Systems | AI/ML Researcher | IEEE APPEEC 2026 Co-Author",
 };
 
 export const about = {

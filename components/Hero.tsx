@@ -110,13 +110,6 @@ export function Hero({ hero, siteConfig }: HeroProps) {
           >
             {hero.summaryLine}
           </motion.p>
-          <motion.p
-            variants={child}
-            transition={{ duration: 0.5 }}
-            className="mt-3 text-pretty text-sm leading-relaxed text-gray-text"
-          >
-            {hero.metaLine}
-          </motion.p>
           <motion.div
             variants={child}
             transition={{ duration: 0.5 }}
