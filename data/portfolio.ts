@@ -9,7 +9,7 @@ export const siteConfig = {
   /** Bump this every time you replace the PDF (same filename) so the link changes and caches invalidate. */
   resumeCacheKey: "4",
   /** Photo in `public/` — e.g. `/profile.jpeg` or `/profile.png` (square, ≥256×256 recommended). */
-  profileImage: "/profile.jpeg",
+  profileImage: "/profile-photo.jpg",
   social: {
     github: "https://github.com/RAVIYADAV6522",
     linkedin: "https://www.linkedin.com/in/ravi-y-963457363/",
