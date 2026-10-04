@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { isLowPower } from "@/components/AmbientEffects";
 
 const cubeSlotClass =
   "absolute flex h-[min(42vw,280px)] w-[min(42vw,280px)] items-center justify-center sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]";
@@ -17,6 +18,8 @@ export function BackgroundCube() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduce.matches) return;
+    // low-power devices: keep the cubes but don't animate them
+    if (isLowPower()) return;
 
     const tick = (t: number) => {
       const left = leftRef.current;
@@ -43,7 +46,18 @@ export function BackgroundCube() {
     };
 
     rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
+
+    // stop burning frames while the tab is in the background
+    const onVisibility = () => {
+      cancelAnimationFrame(rafRef.current);
+      if (!document.hidden) rafRef.current = requestAnimationFrame(tick);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   return (

@@ -1,7 +1,11 @@
 "use client";
 
+import { SectionLabel } from "@/components/SectionLabel";
+
+import { RevealText } from "@/components/RevealText";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { HeadingAccent } from "@/components/HeadingAccent";
 import { SectionMotion } from "@/components/SectionMotion";
 import type { Certification } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
@@ -13,15 +17,17 @@ export function Certifications({ certifications }: { certifications: Certificati
       className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-content">
+        <SectionLabel index={6} label="Learning" />
         <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
-          Certifications
+          <RevealText text="Certifications" />
         </h2>
+        <HeadingAccent />
         <ul className="mt-12 space-y-10">
           {certifications.map((cert, i) => (
             <motion.li
               key={cert.title}
               {...scrollLiftProps(i)}
-              className="rounded-xl border border-slate-200/80 bg-white/50 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
+              className="spotlight rounded-xl border border-slate-200/80 bg-white/60 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/40"
             >
               <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
                 <div>

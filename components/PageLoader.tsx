@@ -4,14 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { PortfolioLoadProvider } from "@/components/PortfolioLoadContext";
 
-const SEGMENT_ROTATIONS = [0, 45, 90, 135, 180, 225, 270, 315] as const;
-const NUM_SEGMENTS = SEGMENT_ROTATIONS.length;
-const OFFSET = 0.09;
-const WAVE_DURATION = NUM_SEGMENTS * OFFSET;
-
-const pathD =
-  "M 94 25 C 94 21.686 96.686 19 100 19 L 100 19 C 103.314 19 106 21.686 106 25 L 106 50 C 106 53.314 103.314 56 100 56 L 100 56 C 96.686 56 94 53.314 94 50 Z";
-
 /**
  * Full-screen intro loader on hard refresh / first paint. Hides after window load
  * (and a minimum time) so the segment animation is visible before content appears.
@@ -25,7 +17,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const minVisibleMs = 900;
+    const minVisibleMs = 1300;
     const started = performance.now();
     let failSafeId: ReturnType<typeof setTimeout> | undefined;
 
@@ -84,12 +76,19 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
             aria-live="polite"
             aria-label="Loading"
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-[var(--background)]/92 backdrop-blur-md"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+            exit={{ opacity: 0.6, clipPath: "inset(0% 0% 100% 0%)" }}
+            transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}
           >
             <LoaderSvg />
             <p className="text-sm font-medium text-gray-text">Loading portfolio…</p>
+            <div className="h-[2px] w-40 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+              <motion.div
+                className="h-full w-1/2 rounded-full bg-gradient-to-r from-accent-mint via-accent-lavender to-accent-coral"
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -97,37 +96,51 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** "RY" monogram that draws itself, with the brand gradient. */
 function LoaderSvg() {
+  const strokes = [
+    "M14 70 V12 H40 a17 17 0 0 1 0 34 H14", // R bowl
+    "M36 46 L56 70", // R leg
+    "M66 12 L86 42 L106 12", // Y arms
+    "M86 42 V70", // Y stem
+  ];
   return (
     <motion.svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={200}
-      height={200}
-      viewBox="0 0 200 200"
-      className="text-[#ff0088]"
+      width={150}
+      height={100}
+      viewBox="0 0 120 82"
+      fill="none"
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      aria-hidden
     >
       <defs>
-        <path id="portfolio-loader-path" d={pathD} />
+        <linearGradient id="ry-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#2dd4bf" />
+          <stop offset="55%" stopColor="#a5b4fc" />
+          <stop offset="100%" stopColor="#fca5a5" />
+        </linearGradient>
       </defs>
-      {SEGMENT_ROTATIONS.map((deg, i) => (
-        <motion.g
-          key={deg}
-          transform={`rotate(${deg} 100 100)`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
+      {strokes.map((d, i) => (
+        <motion.path
+          key={i}
+          d={d}
+          stroke="url(#ry-grad)"
+          strokeWidth={7}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0, opacity: 0.2 }}
+          animate={{ pathLength: [0, 1, 1], opacity: [0.2, 1, 1] }}
           transition={{
-            duration: WAVE_DURATION,
+            duration: 1.6,
+            times: [0, 0.6, 1],
+            delay: i * 0.18,
             repeat: Infinity,
-            ease: "linear",
-            times: [0, 0.1, 1],
-            delay: i * OFFSET - WAVE_DURATION,
+            repeatDelay: 0.4,
+            ease: "easeInOut",
           }}
-        >
-          <use href="#portfolio-loader-path" fill="currentColor" />
-        </motion.g>
+        />
       ))}
     </motion.svg>
   );

@@ -1,7 +1,12 @@
 "use client";
 
+import { SectionLabel } from "@/components/SectionLabel";
+
+import { RevealText } from "@/components/RevealText";
 import { motion } from "framer-motion";
 import type { AboutContent } from "@/data/portfolio";
+import { HeadingAccent } from "@/components/HeadingAccent";
+import { ScrollWords } from "@/components/ScrollWords";
 import { staggerContainer, staggerItem, viewportOnce } from "@/lib/motion";
 
 export function About({ about }: { about: AboutContent }) {
@@ -17,21 +22,23 @@ export function About({ about }: { about: AboutContent }) {
         whileInView="visible"
         viewport={viewportOnce}
       >
+        <SectionLabel index={1} label="Introduction" className="-mb-3 self-start" />
         <motion.h2
           variants={staggerItem}
           className="font-heading text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl md:text-4xl"
         >
-          About
+          <RevealText text="About" />
+          <HeadingAccent />
         </motion.h2>
         {about.introParagraphs.map((p, i) => (
           <motion.p key={i} variants={staggerItem}>
-            {p}
+            <ScrollWords text={p} />
           </motion.p>
         ))}
 
         {about.closingParagraphs.map((p, i) => (
           <motion.p key={`close-${i}`} variants={staggerItem}>
-            {p}
+            <ScrollWords text={p} />
           </motion.p>
         ))}
       </motion.div>

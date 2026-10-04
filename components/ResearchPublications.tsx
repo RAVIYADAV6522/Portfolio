@@ -1,5 +1,9 @@
 "use client";
 
+import { HeadingAccent } from "@/components/HeadingAccent";
+import { RevealText } from "@/components/RevealText";
+import { SectionLabel } from "@/components/SectionLabel";
+
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Publication } from "@/data/portfolio";
@@ -23,19 +27,21 @@ export function ResearchPublications({ publications }: { publications: Publicati
         whileInView="visible"
         viewport={viewportOnce}
       >
-        <motion.span
+        <SectionLabel index={7} label="Research" />
+        <motion.h2
           variants={staggerItem}
           id="research-heading"
-          className="inline-block rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white dark:bg-slate-100 dark:text-slate-900"
+          className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"
         >
-          Research Publications
-        </motion.span>
+          <RevealText text="Research Publications" />
+          <HeadingAccent />
+        </motion.h2>
         <ul className="mt-10 list-none space-y-8 p-0">
           {publications.map((pub, i) => (
             <motion.li
               key={pub.title}
               {...scrollLiftProps(i)}
-              className="flex flex-col gap-2 border-b border-slate-200/80 pb-8 last:border-0 dark:border-slate-700"
+              className="group/pub flex flex-col gap-2 border-b border-slate-200/80 pb-8 last:border-0 dark:border-slate-700"
             >
               <a
                 href={pub.githubUrl}
@@ -44,7 +50,7 @@ export function ResearchPublications({ publications }: { publications: Publicati
                 className="group inline-flex items-start gap-2 font-heading text-lg font-semibold text-primary hover:underline"
               >
                 {pub.title}
-                <ExternalLink className="mt-1 h-4 w-4 shrink-0 opacity-60 group-hover:opacity-100" />
+                <ExternalLink className="mt-1 h-4 w-4 shrink-0 opacity-60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100" />
               </a>
               <span className="text-sm text-gray-text">{pub.status}</span>
               <a

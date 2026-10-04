@@ -228,8 +228,30 @@ export const publications: Publication[] = [
   },
 ];
 
+export type ProjectCategory = "ai" | "fullstack" | "systems";
+
+/** Which animated mini-illustration the project card shows. */
+export type ProjectVisualKind =
+  | "grid"
+  | "options"
+  | "chat"
+  | "delivery"
+  | "files"
+  | "snake";
+
+export const projectCategories: { id: "all" | ProjectCategory; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "ai", label: "AI / ML" },
+  { id: "fullstack", label: "Full-stack" },
+  { id: "systems", label: "Systems" },
+];
+
 export type Project = {
   title: string;
+  categories: ProjectCategory[];
+  visual: ProjectVisualKind;
+  /** Shown as the big card at the top of the grid. */
+  featured?: boolean;
   tags: string[];
   /** Resume-style impact bullets; use at least three per project. */
   bullets: string[];
@@ -243,6 +265,9 @@ export const projects: Project[] = [
   
   {
     title: "Watt-IF – Electricity Data Mining and Grid Resilience Research",
+    categories: ["ai"],
+    visual: "grid",
+    featured: true,
     tags: [
       "Python",
       "XGBoost",
@@ -261,6 +286,8 @@ export const projects: Project[] = [
   
   {
     title: "Optiforge Neural Options Pricing",
+    categories: ["ai"],
+    visual: "options",
     tags: [
       "Python",
       "LSTM",
@@ -278,6 +305,8 @@ export const projects: Project[] = [
   },
   {
     title: "Smart Commerce AI Agent",
+    categories: ["ai", "fullstack"],
+    visual: "chat",
     tags: [
       "React",
       "Vite",
@@ -302,6 +331,8 @@ export const projects: Project[] = [
 
   {
     title: "Eats – Full-Stack Enterprise Food Delivery Ecosystem",
+    categories: ["fullstack"],
+    visual: "delivery",
     tags: [
       "React",
       "Redux Toolkit",
@@ -325,6 +356,8 @@ export const projects: Project[] = [
 
   {
     title: "AI-Powered File Organizer with OS-Level System Calls",
+    categories: ["systems", "ai", "fullstack"],
+    visual: "files",
     tags: [
       "C",
       "Operating Systems",
@@ -346,6 +379,8 @@ export const projects: Project[] = [
 
   {
     title: "Snake Game OS with Custom Memory Allocator and Terminal Engine",
+    categories: ["systems"],
+    visual: "snake",
     tags: [
       "C",
       "Operating Systems",

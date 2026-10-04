@@ -1,14 +1,19 @@
 "use client";
 
+import { SectionLabel } from "@/components/SectionLabel";
+
+import { RevealText } from "@/components/RevealText";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { SectionMotion } from "@/components/SectionMotion";
 import { DrummingMonkey } from "@/components/DrummingMonkey";
+import { HeadingAccent } from "@/components/HeadingAccent";
 import type { WorkEntry } from "@/data/portfolio";
 import { scrollLiftProps } from "@/lib/motion";
 
 export function WorkExperience({ workExperience }: { workExperience: WorkEntry[] }) {
   const internshipsHeaderRef = useRef<HTMLDivElement>(null);
+  const internshipsTitleRef = useRef<HTMLHeadingElement>(null);
   const internshipsInView = useInView(internshipsHeaderRef, {
     amount: 0.55,
     margin: "0px 0px -12% 0px",
@@ -23,24 +28,32 @@ export function WorkExperience({ workExperience }: { workExperience: WorkEntry[]
       <div className="mx-auto max-w-content">
         <div
           ref={internshipsHeaderRef}
-          className="flex flex-col items-start gap-1"
+          className="inline-flex flex-col items-start gap-1"
         >
-          <DrummingMonkey drumActive={internshipsInView} />
-          <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
-            Internships
+          <SectionLabel index={2} label="Experience" />
+          <DrummingMonkey
+            drumActive={internshipsInView}
+            trackRef={internshipsTitleRef}
+          />
+          <h2
+            ref={internshipsTitleRef}
+            className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"
+          >
+            <RevealText text="Internships" />
           </h2>
+          <HeadingAccent />
         </div>
         <ul className="mt-12 space-y-10">
           {workExperience.map((job, idx) => (
             <motion.li
               key={job.company}
               {...scrollLiftProps(idx)}
-              className="rounded-xl border border-slate-200/80 bg-white/50 p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800/40"
+              className="spotlight group rounded-xl border border-slate-200/80 bg-white/60 p-6 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/40"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex gap-4">
                   <div
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/15 text-sm font-bold text-primary ring-2 ring-primary/30"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-accent-lavender/25 text-sm font-bold text-primary ring-2 ring-primary/30 transition-transform duration-500 group-hover:rotate-[360deg]"
                     aria-hidden
                   >
                     {job.logo}
