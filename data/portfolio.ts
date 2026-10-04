@@ -62,6 +62,7 @@ export const workExperience: WorkEntry[] = [
 export type EducationEntry = {
   degree: string;
   institution: string;
+  location?: string;
   dates: string;
   grade: string;
 };
@@ -70,18 +71,21 @@ export const educationEntries: EducationEntry[] = [
   {
     degree: "Bachelor of Technology (Artificial Intelligence)",
     institution: "Newton School of Technology, Rishihood University",
+    location: "Delhi NCR, India",
     dates: "2023 – 2027",
-    grade: "7.13 / 10.0",
+    grade: "7.05 / 10.0",
   },
   {
     degree: "Intermediate (Class XII)",
     institution: "Malviya Convent School",
+    location: "Jaipur, Rajasthan",
     dates: "2021 – 2022",
     grade: "83.0%",
   },
   {
     degree: "Matriculation (Class X)",
     institution: "St. Edmund's School",
+    location: "Jaipur, Rajasthan",
     dates: "2019 – 2020",
     grade: "91.1%",
   },

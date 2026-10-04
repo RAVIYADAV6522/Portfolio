@@ -82,6 +82,11 @@ export function Education({ educationEntries }: { educationEntries: EducationEnt
                   <p className="mt-1 text-sm font-medium text-primary">
                     {entry.institution}
                   </p>
+                  {entry.location && (
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      {entry.location}
+                    </p>
+                  )}
                 </div>
                 <div className="shrink-0 text-left sm:text-right">
                   <p className="text-sm text-gray-text">{entry.dates}</p>
