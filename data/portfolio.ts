@@ -26,12 +26,12 @@ export const hero = {
 
 export const about = {
   introParagraphs: [
-    "I'm a Computer Science undergraduate at Newton School of Technology (Batch '27), working at the intersection of algorithms, backend engineering, and machine learning.",
-    "Competitive programming taught me to think precisely under constraints. Backend engineering taught me to build systems that scale. ML gives me a space to experiment and understand how things work beneath the surface — not just make them run.",
-    "Outside of building, I enjoy breaking down complex ideas into intuitive explanations, because clarity of thought and clarity of communication usually go hand in hand.",
+    "I'm an AI undergraduate (B.Tech, 2023–2027) and AI/ML researcher interested in a simple question: how do we build intelligent systems that work reliably in the real world, not just on a dataset?",
+    "My current research explores deep learning for energy and physical systems, where models need to respect the underlying laws of the system rather than simply fit patterns in data. I'm the second of five authors on a physics-informed load forecasting paper presented at IEEE APPEEC 2026 in Singapore, as part of my ongoing work on power-grid forecasting and optimization.",
+    "Beyond ML research, I enjoy understanding how systems are built from the ground up — from backend engineering and APIs to high-level design, system architecture, scalability, and reliability. I'm also deepening my foundations in NLP and computer vision, while competitive programming keeps my algorithmic and mathematical thinking sharp.",
   ],
   closingParagraphs: [
-    "Open to collaborating on backend architecture, algorithmic problems, or research in ML and data.",
+    "Long term, I'm interested in graduate research at the intersection of machine learning, physical systems, and infrastructure, while continuing to build scalable software along the way. Always happy to connect over research ideas, interesting systems, or opportunities to build something meaningful.",
   ],
 };
 
