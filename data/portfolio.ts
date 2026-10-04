@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Ravi Yadav",
-  metaTitle: "Ravi Yadav | AIR 6522 JEE Advanced '23 · Data Mining & Deep Learning",
+  metaTitle: "Ravi Yadav | AI/ML Researcher · IEEE APPEEC 2026 Co-Author",
   metaDescription:
-    "Computer Science undergraduate (CSE '27) at Newton School of Technology. Data mining researcher, deep learning engineer, and competitive programmer — Jaipur, India.",
+    "AI undergraduate (B.Tech '27) at Newton School of Technology building intelligent, scalable systems. Co-author of a physics-informed load forecasting paper at IEEE APPEEC 2026, Singapore.",
   email: "yadavr74839@gmail.com",
   /** File must live in `public/` with this exact name. Commit + push so Vercel serves it. */
   resumePath: "/RaviYadav_Resume.pdf",

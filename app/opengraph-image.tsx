@@ -29,7 +29,7 @@ export default function OgImage() {
             fontWeight: 500,
           }}
         >
-          CS & AI Developer
+          AI/ML Researcher · IEEE APPEEC 2026 Co-Author
         </div>
       </div>
     ),
