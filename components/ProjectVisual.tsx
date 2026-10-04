@@ -34,8 +34,6 @@ export function ProjectVisual({ kind }: { kind: ProjectVisualKind }) {
         <rect width="320" height="160" fill={`url(#pv-dots-${kind})`} />
         {kind === "grid" && <GridScene />}
         {kind === "options" && <OptionsScene />}
-        {kind === "chat" && <ChatScene />}
-        {kind === "delivery" && <DeliveryScene />}
         {kind === "files" && <FilesScene />}
         {kind === "snake" && <SnakeScene />}
         {kind === "search" && <SearchScene />}
@@ -107,76 +105,6 @@ function OptionsScene() {
         <text x="30" y="15" className="pv-label">LSTM</text>
         <line x1="10" y1="25" x2="24" y2="25" className="pv-bs" />
         <text x="30" y="28" className="pv-label">Black–Scholes</text>
-      </g>
-    </g>
-  );
-}
-
-/* ---------- Smart Commerce: chat → agent typing → product card → cart ---------- */
-function ChatScene() {
-  return (
-    <g>
-      <g className="pv-seq" style={{ animationDelay: "0s" }}>
-        <rect x="150" y="14" width="152" height="26" rx="13" className="pv-bubble-user" />
-        <text x="164" y="31" className="pv-bubble-text-user">find running shoes under ₹3k</text>
-      </g>
-      <g className="pv-seq" style={{ animationDelay: "0.9s" }}>
-        <rect x="18" y="50" width="54" height="24" rx="12" className="pv-bubble-bot" />
-        <circle cx="34" cy="62" r="3" className="pv-typing" />
-        <circle cx="45" cy="62" r="3" className="pv-typing" style={{ animationDelay: "0.15s" }} />
-        <circle cx="56" cy="62" r="3" className="pv-typing" style={{ animationDelay: "0.3s" }} />
-      </g>
-      <g className="pv-seq" style={{ animationDelay: "1.9s" }}>
-        <rect x="18" y="84" width="170" height="62" rx="12" className="pv-card" />
-        <rect x="28" y="94" width="42" height="42" rx="8" className="pv-thumb" />
-        <rect x="80" y="98" width="88" height="8" rx="4" className="pv-line" />
-        <rect x="80" y="112" width="56" height="8" rx="4" className="pv-line pv-line-soft" />
-        <rect x="80" y="125" width="40" height="12" rx="6" className="pv-price" />
-      </g>
-      <g className="pv-seq" style={{ animationDelay: "2.9s" }}>
-        <g transform="translate(250 92)">
-          <circle r="26" className="pv-cart-bg" />
-          <path d="M-12 -8 h4 l4 14 h14 l3 -10 h-19" className="pv-cart" />
-          <circle cx="-2" cy="11" r="2.4" className="pv-cart-fill" />
-          <circle cx="9" cy="11" r="2.4" className="pv-cart-fill" />
-          <g className="pv-badge">
-            <circle cx="14" cy="-14" r="8" className="pv-badge-bg" />
-            <text x="14" y="-10.5" textAnchor="middle" className="pv-badge-text">1</text>
-          </g>
-        </g>
-      </g>
-    </g>
-  );
-}
-
-/* ---------- Eats: delivery route with a moving rider ---------- */
-const ROUTE = "M34 128 C84 128 72 62 132 62 S204 112 244 72 S284 34 292 32";
-function DeliveryScene() {
-  return (
-    <g>
-      {[
-        [60, 20, 50, 28], [150, 96, 60, 40], [220, 18, 44, 30], [24, 74, 36, 26], [256, 112, 48, 32],
-      ].map(([x, y, w, h], i) => (
-        <rect key={i} x={x} y={y} width={w} height={h} rx="6" className="pv-block" />
-      ))}
-      <path d={ROUTE} className="pv-route" />
-      <path d={ROUTE} pathLength={1} className="pv-route-done" />
-      <g transform="translate(34 128)">
-        <circle r="9" className="pv-pin-start" />
-        <text y="3.5" textAnchor="middle" className="pv-emoji">🍜</text>
-      </g>
-      <g transform="translate(292 32)">
-        <circle r="9" className="pv-pin-end" />
-        <text y="3.5" textAnchor="middle" className="pv-emoji">🏠</text>
-      </g>
-      <g>
-        <circle r="10" className="pv-rider-halo" />
-        <circle r="6" className="pv-rider" />
-        <animateMotion dur="4s" repeatCount="indefinite" path={ROUTE} keyPoints="0;1;1" keyTimes="0;0.85;1" calcMode="linear" />
-      </g>
-      <g transform="translate(150 20)">
-        <rect width="64" height="22" rx="11" className="pv-card" />
-        <text x="32" y="15" textAnchor="middle" className="pv-label">ETA 12 min</text>
       </g>
     </g>
   );

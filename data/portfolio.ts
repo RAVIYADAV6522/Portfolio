@@ -243,8 +243,6 @@ export type ProjectCategory = "ai" | "fullstack" | "systems";
 export type ProjectVisualKind =
   | "grid"
   | "options"
-  | "chat"
-  | "delivery"
   | "files"
   | "snake"
   | "search"
@@ -359,56 +357,7 @@ export const projects: Project[] = [
       "Packaged a Streamlit demo for interactive exploration and faster iteration on model behavior and error profiles.",
     ],
   },
-  {
-    title: "Smart Commerce AI Agent",
-    categories: ["ai", "fullstack"],
-    visual: "chat",
-    tags: [
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "LLM",
-      "Ollama",
-      "AI Agents",
-      "REST API",
-      "Conversational AI",
-      "System Design"
-    ],
-    githubUrl: "https://github.com/RAVIYADAV6522/Smart-Commerce-AI-Agent",
-    demoUrl: "https://smart-commerce-ai-agent.vercel.app/",
-    bullets: [
-      "Engineered a conversational commerce platform (Express, React, Vite, Tailwind) with Ollama tool-calling to run search, cart, and checkout against a catalog-backed, decoupled API.",
-      "Shipped hybrid intent routing: deterministic fast paths for low-latency turns plus a multi-step agent (up to 5 iterations) with structured JSON tool I/O for complex flows.",
-      "Improved real-world performance: cut multi-step agent latency from ~20s to under ~10s and ~1s on fast paths; added validation, rate limiting, and bounded session context.",
-    ],
-  },
 
-  {
-    title: "Eats – Full-Stack Enterprise Food Delivery Ecosystem",
-    categories: ["fullstack"],
-    visual: "delivery",
-    tags: [
-      "React",
-      "Redux Toolkit",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "JWT Authentication",
-      "REST API",
-      "Full Stack Development",
-      "Cloudinary"
-    ],
-    githubUrl: "https://github.com/Ranvendra/Eats",
-    demoUrl: "https://eatindia.vercel.app/",
-    bullets: [
-      "Delivered end-to-end food delivery flows—authentication, restaurant browse, cart, checkout, and order tracking—on React, Redux Toolkit, TypeScript, Express, and MongoDB.",
-      "Designed a modular, class-based backend with JWT auth, Mongoose data modeling, and versioned REST APIs for scalable feature growth.",
-      "Polished UX with debounced cart synchronization, route-level lazy loading, and Cloudinary-backed media for menus and item imagery.",
-    ],
-  },
 
   {
     title: "AI-Powered File Organizer with OS-Level System Calls",

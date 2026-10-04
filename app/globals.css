@@ -608,36 +608,12 @@ body {
 @keyframes pv-draw { 0% { stroke-dashoffset: 1; } 75%, 100% { stroke-dashoffset: 0; } }
 @keyframes pv-band { 50% { opacity: 0.3; } }
 
-/* chat */
+/* shared: staged reveal + skeleton lines (PrepLens) */
 .pv-seq { opacity: 0; animation: pv-seq 6s ease-out infinite; }
 @keyframes pv-seq { 0% { opacity: 0; transform: translateY(8px) scale(0.96); } 7% { opacity: 1; transform: none; } 80% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; transform: translateY(-4px); } }
-.pv-bubble-user { fill: var(--pv-teal); }
-.pv-bubble-text-user { font: 600 9.5px/1 Inter, system-ui, sans-serif; fill: #ffffff; }
-.pv-bubble-bot { fill: var(--pv-card); stroke: var(--pv-line); }
-.pv-typing { fill: var(--pv-muted); animation: pv-typing 0.9s ease-in-out infinite; }
-@keyframes pv-typing { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(-3px); opacity: 1; } }
-.pv-thumb { fill: var(--pv-lav); opacity: 0.35; }
 .pv-line { fill: var(--pv-line); }
 .pv-line-soft { opacity: 0.6; }
 .pv-price { fill: var(--pv-teal-soft); }
-.pv-cart-bg { fill: var(--pv-teal-soft); }
-.pv-cart { fill: none; stroke: var(--pv-teal); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-.pv-cart-fill { fill: var(--pv-teal); }
-.pv-badge { transform-origin: center; animation: pv-badge 6s ease-out infinite; animation-delay: 3.2s; }
-.pv-badge-bg { fill: var(--pv-coral); }
-.pv-badge-text { font: 700 9px/1 Inter, system-ui, sans-serif; fill: #ffffff; }
-@keyframes pv-badge { 0% { transform: scale(0); } 6% { transform: scale(1.3); } 10%, 100% { transform: scale(1); } }
-
-/* delivery */
-.pv-block { fill: var(--pv-line); opacity: 0.35; }
-.pv-route { fill: none; stroke: var(--pv-line); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
-.pv-route-done { fill: none; stroke: var(--pv-teal); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: pv-route 4s linear infinite; }
-@keyframes pv-route { 0% { stroke-dashoffset: 1; } 85%, 100% { stroke-dashoffset: 0; } }
-.pv-pin-start { fill: rgba(248, 113, 113, 0.2); stroke: var(--pv-coral); stroke-width: 1.5; }
-.pv-pin-end { fill: rgba(129, 140, 248, 0.2); stroke: var(--pv-lav); stroke-width: 1.5; }
-.pv-emoji { font-size: 10px; }
-.pv-rider { fill: var(--pv-teal); stroke: #ffffff; stroke-width: 2; }
-.pv-rider-halo { fill: var(--pv-teal-soft); transform-origin: center; animation: pv-halo 1.2s ease-in-out infinite; }
 
 /* files */
 .pv-folder { transform-origin: center bottom; animation: pv-folder 3.2s ease-in-out infinite; }
@@ -683,7 +659,7 @@ body {
   .pv * { animation: none !important; }
   .pv-seq, .pv-file, .pv-bbox { opacity: 1; }
   .pv-scan { opacity: 0; }
-  .pv-draw, .pv-route-done { stroke-dashoffset: 0; }
+  .pv-draw { stroke-dashoffset: 0; }
 }
 
 /* =====================================================================
