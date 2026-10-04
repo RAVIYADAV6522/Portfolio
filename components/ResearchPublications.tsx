@@ -1,5 +1,6 @@
 "use client";
 
+import { ResearchOwl } from "@/components/ResearchOwl";
 import { HeadingAccent } from "@/components/HeadingAccent";
 import { RevealText } from "@/components/RevealText";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -27,7 +28,8 @@ export function ResearchPublications({ publications }: { publications: Publicati
         whileInView="visible"
         viewport={viewportOnce}
       >
-        <SectionLabel index={7} label="Research" />
+        <SectionLabel index={3} label="Research" />
+        <ResearchOwl />
         <motion.h2
           variants={staggerItem}
           id="research-heading"

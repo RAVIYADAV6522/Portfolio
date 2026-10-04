@@ -43,12 +43,12 @@ export default function Home() {
         <TechMarquee skillsByCategory={skillsByCategory} />
         <About about={about} />
         <WorkExperience workExperience={workExperience} />
+        <ResearchPublications publications={publications} />
+        <Projects projects={projects} />
         <Education educationEntries={educationEntries} />
         <HonorsAwards honorsAwards={honorsAwards} />
         <Skills skillsByCategory={skillsByCategory} />
         <Certifications certifications={certifications} />
-        <ResearchPublications publications={publications} />
-        <Projects projects={projects} />
         <Activity siteConfig={siteConfig} />
         <AchievementsActivities
           achievementsAndActivities={achievementsAndActivities}

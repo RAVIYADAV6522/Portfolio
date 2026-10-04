@@ -1,5 +1,6 @@
 "use client";
 
+import { CricketFox } from "@/components/CricketFox";
 import { SectionLabel } from "@/components/SectionLabel";
 
 import { RevealText } from "@/components/RevealText";
@@ -20,6 +21,7 @@ export function AchievementsActivities({
     >
       <div className="mx-auto max-w-content">
         <SectionLabel index={10} label="Beyond code" />
+        <CricketFox />
         <h2 className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
           <RevealText text="Achievements & Activities" />
         </h2>

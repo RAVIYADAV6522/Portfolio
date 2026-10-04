@@ -1,5 +1,6 @@
 "use client";
 
+import { JugglingOctopus } from "@/components/JugglingOctopus";
 import { SectionLabel } from "@/components/SectionLabel";
 import { SkillIcon } from "@/components/SkillIcon";
 
@@ -38,7 +39,8 @@ export function Skills({ skillsByCategory }: { skillsByCategory: SkillCategory[]
         whileInView="visible"
         viewport={viewportOnce}
       >
-        <SectionLabel index={5} label="Toolkit" />
+        <SectionLabel index={7} label="Toolkit" />
+        <JugglingOctopus />
         <motion.h2
           variants={staggerItem}
           className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"

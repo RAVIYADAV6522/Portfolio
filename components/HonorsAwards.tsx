@@ -31,7 +31,7 @@ export function HonorsAwards({ honorsAwards }: { honorsAwards: Award[] }) {
           ref={honorsHeaderRef}
           className={`flex flex-col items-start gap-1 ${honorsInView ? "is-active" : ""}`}
         >
-          <SectionLabel index={4} label="Recognition" />
+          <SectionLabel index={6} label="Recognition" />
           <EatingPanda eatingActive={honorsInView} />
           <h2 className="relative inline-block font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl">
             <RevealText text="Honors & Awards" />

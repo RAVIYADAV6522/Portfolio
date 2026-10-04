@@ -157,7 +157,7 @@ export function Projects({ projects }: { projects: Project[] }) {
           viewport={viewportOnce}
           className="flex flex-col items-start"
         >
-          <SectionLabel index={8} label="Work" />
+          <SectionLabel index={4} label="Work" />
           <motion.h2
             variants={staggerItem}
             id="projects-heading"

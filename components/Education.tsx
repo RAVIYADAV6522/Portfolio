@@ -1,5 +1,6 @@
 "use client";
 
+import { GradPenguin } from "@/components/GradPenguin";
 import { SectionLabel } from "@/components/SectionLabel";
 
 import { RevealText } from "@/components/RevealText";
@@ -33,7 +34,8 @@ export function Education({ educationEntries }: { educationEntries: EducationEnt
         whileInView="visible"
         viewport={viewportOnce}
       >
-        <SectionLabel index={3} label="Academics" />
+        <SectionLabel index={5} label="Academics" />
+        <GradPenguin />
         <motion.h2
           variants={staggerItem}
           className="font-heading text-3xl font-bold text-slate-900 dark:text-white md:text-4xl"
