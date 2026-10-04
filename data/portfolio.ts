@@ -48,13 +48,13 @@ export const workExperience: WorkEntry[] = [
   {
     company: "Algocept",
     role: "Software Engineer Intern",
-    dates: "January 2025 – February 2025",
-    location: "Remote",
+    dates: "January 2025 – April 2025 · 4 mos",
+    location: "Noida, Uttar Pradesh, India · Remote",
     logo: "AC",
     bullets: [
-      "Resolved critical UI/UX issues in a React.js + Tailwind CSS admin dashboard, improving responsiveness and reducing user-reported errors.",
-      "Designed and deployed RESTful APIs using NestJS, TypeScript, and MongoDB, contributing to a scalable backend architecture.",
-      "Optimized database queries and API response time, improving backend efficiency and ensuring seamless frontend–backend integration.",
+      "Improved a React.js and Tailwind CSS admin dashboard by resolving 20+ UI/UX and responsiveness issues, delivering a more consistent cross-device experience.",
+      "Developed a RESTful API supporting 3 country-specific configurations using NestJS, TypeScript, and MongoDB, enabling dynamic footer content.",
+      "Optimized admin dashboard loading for 500+ users by implementing pagination, reducing initial load time by ~50% while limiting each request to 5 users.",
     ],
   },
 ];
