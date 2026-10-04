@@ -113,13 +113,6 @@ export const honorsAwards: Award[] = [
     description:
       "Secured All India Rank (AIR) 24875 in JEE Main 2023 with a 97.84 percentile. OBC-NCL category rank: 6397.",
   },
-  {
-    title: "Jaipur Under-16 Cricket Team",
-    org: "Jaipur district cricket",
-    year: "2017 – 2018",
-    description:
-      "Represented Jaipur as an opening batsman and part-time wicketkeeper.",
-  },
 ];
 
 export type SkillCategory = {
@@ -408,9 +401,14 @@ export const projects: Project[] = [
   
 ];
 
+/** Each item renders as "**Lead:** detail" — the text before the first ": " is bolded. */
 export const achievementsAndActivities: string[] = [
-  "NST Startup Foundry 2026: Won 1st place for Jarvis, an AI-powered Personal Intelligence System pitched to Google Cloud and Microsoft for Startups.",
-  "Mentored 10+ students in Data Structures and Algorithms, improving problem-solving skills and coding proficiency.",
+  "IEEE PES Energy Shark Tank 2026 (18th APPEEC, Singapore): FlexGrid pitch selected among the Top 5 in the IEEE PES YP Industry Innovation Session; awarded a Certificate of Achievement for the most outstanding innovative solution and placed 3rd overall.",
+  "1st Place, NST Startup Foundry 2026: Won with Jarvis, an AI-powered personal intelligence system, pitched to Google Cloud and Microsoft for Startups.",
+  "Mentorship: Mentored 10+ students in Data Structures & Algorithms.",
+  "IEEE Student Member (2026): Student Member in good standing.",
+  "Jaipur Under-16 Cricket Team: Represented Jaipur as an opening batsman and part-time wicketkeeper.",
+  "More Than Me: Volunteer supporting children in need.",
 ];
 
 export const contact = {

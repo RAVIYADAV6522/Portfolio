@@ -35,7 +35,20 @@ export function AchievementsActivities({
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/60 [animation-duration:2.2s] motion-reduce:animate-none" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
-              <span>{item}</span>
+              <span>
+                {(() => {
+                  const cut = item.indexOf(": ");
+                  if (cut === -1) return item;
+                  return (
+                    <>
+                      <strong className="font-semibold text-slate-900 dark:text-white">
+                        {item.slice(0, cut + 1)}
+                      </strong>{" "}
+                      {item.slice(cut + 2)}
+                    </>
+                  );
+                })()}
+              </span>
             </motion.li>
           ))}
         </ul>
