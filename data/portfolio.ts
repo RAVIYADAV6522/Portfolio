@@ -336,9 +336,9 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/RAVIYADAV6522/PrepLens",
     demoUrl: "https://preplens-umber.vercel.app/",
     bullets: [
-      "Built and deployed PrepLens, a full-stack interview knowledge platform for approximately 2,000 B.Tech students at NST, enabling company-specific preparation through a searchable archive of interview rounds, questions, and student experiences, designed to help students save 10+ hours of unstructured preparation.",
-      "Owned end-to-end product development, including database design, Node.js/Express REST APIs, UI, authentication, search, filters, upvotes, bookmarks, user profiles, and admin moderation, helping students leverage peers’ previous interview experiences for targeted preparation.",
-      "Implemented verified college-account authentication with anonymity controls, deployed through Vercel and Render, and integrated caching and 107 automated tests to support reliable, privacy-conscious knowledge sharing.",
+      "Built and deployed PrepLens, a full-stack placement-prep platform (React, Node/Express, MongoDB, Vercel + Render) used by ~2,000 students, saving each an estimated 10+ hours of interview preparation. Owned it end-to-end, from database design and REST API to UI, search and a feedback-driven redesign.",
+      "Designed a pre-publication moderation workflow with an admin review queue: every submission is approved, or rejected with feedback to the author, and each decision is audited by reviewer. Added company-name deduplication (alias matching plus admin merge/reject) to keep search filters clean.",
+      "Implemented role-based access with separate student and admin sign-in over Google OAuth, restricted to the college domain plus an admin allowlist. Server-side hashed sessions and API-level anonymity protect author identity, backed by 117 automated tests covering auth, moderation and data integrity.",
     ],
   },
   {
