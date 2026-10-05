@@ -318,7 +318,7 @@ export const projects: Project[] = [
   },
   
   {
-    title: "PrepLens – Interview Knowledge Platform",
+    title: "PrepLens – Placement Prep Platform",
     categories: ["fullstack"],
     visual: "search",
     tags: [
