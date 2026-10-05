@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 import { HeadingAccent } from "@/components/HeadingAccent";
@@ -27,6 +27,7 @@ function LiveImage({
   fallbackHref,
   fallbackLabel,
   className,
+  onLoad,
 }: {
   srcLight: string;
   srcDark: string;
@@ -34,6 +35,7 @@ function LiveImage({
   fallbackHref: string;
   fallbackLabel: string;
   className?: string;
+  onLoad?: () => void;
 }) {
   const [loaded, setLoaded] = useState(0);
   const [failed, setFailed] = useState(false);
@@ -63,7 +65,10 @@ function LiveImage({
         alt={alt}
         loading="lazy"
         decoding="async"
-        onLoad={() => setLoaded((n) => n + 1)}
+        onLoad={() => {
+          setLoaded((n) => n + 1);
+          onLoad?.();
+        }}
         onError={() => setFailed(true)}
         className={`block dark:hidden ${className ?? ""}`}
       />
@@ -74,7 +79,10 @@ function LiveImage({
         aria-hidden
         loading="lazy"
         decoding="async"
-        onLoad={() => setLoaded((n) => n + 1)}
+        onLoad={() => {
+          setLoaded((n) => n + 1);
+          onLoad?.();
+        }}
         onError={() => setFailed(true)}
         className={`hidden dark:block ${className ?? ""}`}
       />
@@ -85,6 +93,7 @@ function LiveImage({
 export function Activity({ siteConfig }: { siteConfig: SiteConfig }) {
   const gh = handleFrom(siteConfig.social.github);
   const lc = handleFrom(siteConfig.social.leetcode);
+  const ghScroll = useRef<HTMLDivElement>(null);
 
   return (
     <section id="activity" className="px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:py-24">
@@ -95,7 +104,7 @@ export function Activity({ siteConfig }: { siteConfig: SiteConfig }) {
         </h2>
         <HeadingAccent />
 
-        <div className="mt-10 grid gap-6">
+        <div className="mt-10 grid grid-cols-1 gap-6 [&>*]:min-w-0">
           <motion.div
             {...scrollLiftProps(0)}
             className="spotlight rounded-xl border border-slate-200/80 bg-white/60 p-5 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-800/40 sm:p-6"
@@ -113,14 +122,19 @@ export function Activity({ siteConfig }: { siteConfig: SiteConfig }) {
                 @{gh} <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
-            <div className="overflow-x-auto [scrollbar-width:thin]">
+            {/* On narrow screens the chart scrolls sideways; start at the most recent weeks. */}
+            <div ref={ghScroll} className="overflow-x-auto overscroll-x-contain [scrollbar-width:thin]">
               <LiveImage
                 srcLight={`https://ghchart.rshah.org/0d9488/${gh}`}
                 srcDark={`https://ghchart.rshah.org/0d9488/${gh}`}
                 alt={`GitHub contribution chart for ${gh}`}
                 fallbackHref={siteConfig.social.github}
                 fallbackLabel="See my contributions on GitHub"
-                className="min-w-[640px] w-full dark:opacity-90 dark:[filter:invert(0.9)_hue-rotate(180deg)]"
+                onLoad={() => {
+                  const el = ghScroll.current;
+                  if (el) el.scrollLeft = el.scrollWidth;
+                }}
+                className="min-w-[560px] w-full dark:opacity-90 dark:[filter:invert(0.9)_hue-rotate(180deg)]"
               />
             </div>
           </motion.div>
