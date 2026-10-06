@@ -249,7 +249,7 @@ export function Navbar({ siteConfig }: { siteConfig: SiteConfig }) {
         if (!reduced) mouseX.set(e.clientX);
       }}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="fixed bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex max-w-[min(calc(100vw-0.75rem),100%)] flex-nowrap items-end justify-start gap-0.5 overflow-x-auto overscroll-x-contain rounded-2xl border border-slate-200/80 bg-white/70 px-1.5 py-1.5 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] ring-1 ring-white/60 backdrop-blur-xl backdrop-saturate-150 [scrollbar-width:none] dark:border-slate-700 dark:bg-slate-900/70 dark:ring-white/5 sm:bottom-6 sm:max-w-[calc(100vw-1.5rem)] sm:flex-wrap sm:justify-center sm:gap-1 sm:overflow-visible md:gap-2 md:px-3 [&::-webkit-scrollbar]:hidden"
+      className="dock-bar fixed bottom-[max(0.75rem,env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex max-w-[min(calc(100vw-0.75rem),100%)] flex-nowrap items-end justify-start gap-0.5 overflow-x-auto overscroll-x-contain rounded-2xl border border-slate-200/80 bg-white/70 px-1.5 py-1.5 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.25)] ring-1 ring-white/60 backdrop-blur-xl backdrop-saturate-150 [scrollbar-width:none] dark:border-slate-700 dark:bg-slate-900/70 dark:ring-white/5 sm:bottom-6 sm:max-w-[calc(100vw-1.5rem)] sm:flex-wrap sm:justify-center sm:gap-1 sm:overflow-visible md:gap-2 md:px-3 [&::-webkit-scrollbar]:hidden"
       aria-label="Primary"
     >
       {items.map((item) => {

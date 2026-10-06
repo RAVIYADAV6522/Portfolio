@@ -1,65 +1,12 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { isLowPower } from "@/components/AmbientEffects";
-
 const cubeSlotClass =
   "absolute flex h-[min(42vw,280px)] w-[min(42vw,280px)] items-center justify-center sm:h-[320px] sm:w-[320px] md:h-[360px] md:w-[360px]";
 
 /**
- * Three subtle 3D cubes (left, center, right) in the page background, rAF-driven.
+ * Three subtle 3D cubes (left, center, right) in the page background.
+ * Animated with CSS keyframes (transform only) so the browser runs them on the
+ * compositor thread: no per-frame JS, and they stay smooth while scrolling.
  */
 export function BackgroundCube() {
-  const leftRef = useRef<HTMLDivElement>(null);
-  const centerRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>(0);
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reduce.matches) return;
-    // low-power devices: keep the cubes but don't animate them
-    if (isLowPower()) return;
-
-    const tick = (t: number) => {
-      const left = leftRef.current;
-      const center = centerRef.current;
-      const right = rightRef.current;
-
-      if (left) {
-        const rotate = Math.sin((t + 4200) / 10000) * 200;
-        const y = (1 + Math.sin((t + 900) / 1000)) * -50;
-        left.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${-rotate}deg)`;
-      }
-      if (center) {
-        const rotate = Math.sin((t + 2100) / 10000) * 200;
-        const y = (1 + Math.sin((t + 450) / 1000)) * -42;
-        center.style.transform = `translateY(${y}px) rotateX(${rotate * 0.92}deg) rotateY(${rotate * 0.88}deg)`;
-      }
-      if (right) {
-        const rotate = Math.sin(t / 10000) * 200;
-        const y = (1 + Math.sin(t / 1000)) * -50;
-        right.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${rotate}deg)`;
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-
-    // stop burning frames while the tab is in the background
-    const onVisibility = () => {
-      cancelAnimationFrame(rafRef.current);
-      if (!document.hidden) rafRef.current = requestAnimationFrame(tick);
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, []);
-
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
@@ -68,8 +15,8 @@ export function BackgroundCube() {
       <div
         className={`${cubeSlotClass} -left-16 top-[min(18vh,140px)] sm:left-4`}
       >
-        <div className="portfolio-bg-cube__inner">
-          <div className="portfolio-bg-cube__cube" ref={leftRef}>
+        <div className="portfolio-bg-cube__inner portfolio-bg-cube__inner--left">
+          <div className="portfolio-bg-cube__cube portfolio-bg-cube__cube--left">
             <div className="portfolio-bg-cube__side portfolio-bg-cube__front" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__left" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__right" />
@@ -83,8 +30,8 @@ export function BackgroundCube() {
       <div
         className={`portfolio-bg-cube--center ${cubeSlotClass} left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.85] sm:scale-90`}
       >
-        <div className="portfolio-bg-cube__inner">
-          <div className="portfolio-bg-cube__cube" ref={centerRef}>
+        <div className="portfolio-bg-cube__inner portfolio-bg-cube__inner--center">
+          <div className="portfolio-bg-cube__cube portfolio-bg-cube__cube--center">
             <div className="portfolio-bg-cube__side portfolio-bg-cube__front" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__left" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__right" />
@@ -98,8 +45,8 @@ export function BackgroundCube() {
       <div
         className={`${cubeSlotClass} -right-16 top-[min(18vh,140px)] sm:right-4`}
       >
-        <div className="portfolio-bg-cube__inner">
-          <div className="portfolio-bg-cube__cube" ref={rightRef}>
+        <div className="portfolio-bg-cube__inner portfolio-bg-cube__inner--right">
+          <div className="portfolio-bg-cube__cube portfolio-bg-cube__cube--right">
             <div className="portfolio-bg-cube__side portfolio-bg-cube__front" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__left" />
             <div className="portfolio-bg-cube__side portfolio-bg-cube__right" />
@@ -157,6 +104,40 @@ function CubeStyles() {
         position: relative;
         transform-style: preserve-3d;
         will-change: transform;
+        animation: portfolio-bg-cube-spin 31.4s ease-in-out infinite alternate;
+      }
+      .portfolio-bg-cube__inner {
+        will-change: transform;
+        animation: portfolio-bg-cube-bob 3.14s ease-in-out infinite alternate;
+      }
+
+      /* each cube has its own phase / tilt so they don't move in lockstep */
+      .portfolio-bg-cube__inner--left { --bob: -100px; animation-delay: -2.4s; }
+      .portfolio-bg-cube__inner--center { --bob: -84px; animation-delay: -1.9s; }
+      .portfolio-bg-cube__inner--right { --bob: -100px; animation-delay: -1.57s; }
+      .portfolio-bg-cube__cube--left { --rx: 200deg; --ry: -200deg; animation-delay: -45s; }
+      .portfolio-bg-cube__cube--center { --rx: 184deg; --ry: 176deg; animation-delay: -38s; }
+      .portfolio-bg-cube__cube--right { --rx: 200deg; --ry: 200deg; animation-delay: -15.7s; }
+
+      @keyframes portfolio-bg-cube-bob {
+        from { transform: translateY(0); }
+        to { transform: translateY(var(--bob)); }
+      }
+      @keyframes portfolio-bg-cube-spin {
+        from { transform: rotateX(calc(-1 * var(--rx))) rotateY(calc(-1 * var(--ry))); }
+        to { transform: rotateX(var(--rx)) rotateY(var(--ry)); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .portfolio-bg-cube__cube,
+        .portfolio-bg-cube__inner {
+          animation: none;
+        }
+      }
+      /* low-power devices: keep the cubes but don't animate them */
+      [data-lite] .portfolio-bg-cube__cube,
+      [data-lite] .portfolio-bg-cube__inner {
+        animation: none;
       }
 
       /* Dual gradient palette: #F472B6 → #C084FC → #818CF8 */

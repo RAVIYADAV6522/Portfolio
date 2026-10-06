@@ -221,8 +221,8 @@ export function CommandPalette({ siteConfig }: { siteConfig: SiteConfig }) {
             role="dialog"
             aria-modal="true"
             aria-label="Command menu"
-            initial={{ opacity: 0, y: -12, scale: 0.97, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: -12, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 420, damping: 32 }}
             className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-2xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-900/90"

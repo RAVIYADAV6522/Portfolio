@@ -9,17 +9,16 @@ const container = (delay: number) => ({
 });
 
 const char = {
-  hidden: { opacity: 0, y: "0.45em", filter: "blur(8px)" },
+  hidden: { opacity: 0, y: "0.45em" },
   visible: {
     opacity: 1,
     y: "0em",
-    filter: "blur(0px)",
     transition: { duration: 0.55, ease: easingSmooth },
   },
 };
 
 /**
- * Heading text that rises in letter by letter, de-blurring as it lands.
+ * Heading text that rises in letter by letter.
  * Words never break mid-word; screen readers get the plain text.
  */
 export function RevealText({ text, delay = 0 }: { text: string; delay?: number }) {

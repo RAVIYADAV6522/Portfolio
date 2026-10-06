@@ -22,12 +22,11 @@ export const springSoft = {
 
 /** Whole-section reveal (used by SectionMotion). */
 export const sectionReveal = {
-  hidden: { opacity: 0, y: 26, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 26 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { ...springSoft, filter: { duration: 0.6, ease: easingSmooth } },
+    transition: springSoft,
   },
 };
 

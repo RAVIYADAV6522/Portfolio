@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import { PortfolioLoadProvider } from "@/components/PortfolioLoadContext";
 
 /**
- * Full-screen intro loader on hard refresh / first paint. Hides after window load
- * (and a minimum time) so the segment animation is visible before content appears.
+ * Full-screen intro loader on hard refresh / first paint. Hides once the web fonts
+ * are ready (after a short minimum so it doesn't just flash). It deliberately does
+ * not wait for `window.load`: on slow mobile networks that kept the splash up for
+ * seconds even though the page was already usable.
  */
 export function PageLoader({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
@@ -17,7 +19,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const minVisibleMs = 1300;
+    const minVisibleMs = 600;
     const started = performance.now();
     let failSafeId: ReturnType<typeof setTimeout> | undefined;
 
@@ -44,19 +46,9 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
       failSafeId = undefined;
       setReady(true);
       unlockScroll();
-    }, 4500);
+    }, 1800);
 
-    if (document.readyState === "complete") {
-      void document.fonts.ready.then(finish).catch(finish);
-    } else {
-      window.addEventListener(
-        "load",
-        () => {
-          void document.fonts.ready.then(finish).catch(finish);
-        },
-        { once: true }
-      );
-    }
+    void document.fonts.ready.then(finish).catch(finish);
 
     return () => {
       if (failSafeId !== undefined) clearTimeout(failSafeId);
@@ -75,7 +67,7 @@ export function PageLoader({ children }: { children: React.ReactNode }) {
             role="status"
             aria-live="polite"
             aria-label="Loading"
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-[var(--background)]/92 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-[var(--background)]"
             initial={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
             exit={{ opacity: 0.6, clipPath: "inset(0% 0% 100% 0%)" }}
             transition={{ duration: 0.75, ease: [0.76, 0, 0.24, 1] }}

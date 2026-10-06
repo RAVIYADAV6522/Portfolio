@@ -98,11 +98,10 @@ export function Hero({ hero, siteConfig }: HeroProps) {
           {/* Only the greeting types; the summary glides in (much faster to read). */}
           <motion.p
             variants={{
-              hidden: { opacity: 0, y: 16, filter: "blur(8px)" },
+              hidden: { opacity: 0, y: 16 },
               visible: {
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
                 transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.9 },
               },
             }}

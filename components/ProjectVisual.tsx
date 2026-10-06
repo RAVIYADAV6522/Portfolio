@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import type { ProjectVisualKind } from "@/data/portfolio";
 
@@ -11,18 +11,21 @@ import type { ProjectVisualKind } from "@/data/portfolio";
 export function ProjectVisual({ kind }: { kind: ProjectVisualKind }) {
   const ref = useRef<SVGSVGElement>(null);
   const reduced = useReducedMotion();
+  const inView = useInView(ref, { margin: "100px 0px" });
 
-  // SMIL ignores prefers-reduced-motion, so pause it ourselves.
+  // SMIL ignores prefers-reduced-motion, so pause it ourselves; also pause
+  // while the card is off screen so it doesn't burn frames during scrolling.
   useEffect(() => {
-    if (reduced) ref.current?.pauseAnimations?.();
-  }, [reduced]);
+    if (reduced || !inView) ref.current?.pauseAnimations?.();
+    else ref.current?.unpauseAnimations?.();
+  }, [reduced, inView]);
 
   return (
     <div className="pv-frame relative overflow-hidden rounded-lg border border-slate-200/70 bg-gradient-to-br from-slate-50 via-white to-teal-50/60 dark:border-slate-700/70 dark:from-slate-900 dark:via-slate-900 dark:to-teal-950/40">
       <svg
         ref={ref}
         viewBox="0 0 320 160"
-        className="pv block h-full w-full"
+        className={`pv block h-full w-full ${inView ? "" : "pv-paused"}`}
         aria-hidden
         preserveAspectRatio="xMidYMid meet"
       >

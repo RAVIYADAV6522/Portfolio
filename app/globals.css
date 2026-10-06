@@ -297,6 +297,31 @@ body {
   }
 }
 
+/* ---------- Phones / touch: drop the expensive glass effect ----------
+   backdrop-filter re-blurs whatever is behind an element on every frame it
+   moves (scrolling, animated background cubes). On mobile GPUs that is the
+   main source of scroll jank, so swap it for a plain (more opaque) fill. */
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  .backdrop-blur-sm,
+  .backdrop-blur-md,
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .dock-bar {
+    background-color: rgba(255, 255, 255, 0.96);
+  }
+  .dark .dock-bar {
+    background-color: rgba(15, 23, 42, 0.96);
+  }
+}
+
+/* Off-screen project illustrations: don't keep animating them. */
+.pv-paused,
+.pv-paused * {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .text-gradient-brand,
   .border-orbit::before,
